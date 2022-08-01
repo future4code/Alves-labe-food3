@@ -6,9 +6,8 @@ export const goLogin = navigate => {
     navigate('/login')
   }
   
-  export const goCadastro = (navigate, setPoke, poke) => {
+  export const goCadastro = () => {
     navigate('/cadastro')
-    setPoke(poke)
   }
   
   export const goHome = navigate => {
