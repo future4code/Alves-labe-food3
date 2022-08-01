@@ -6,14 +6,22 @@ import Stack from "@mui/material/Stack";
 
 import { ScreenContainer, InputsContainer, LogoImage } from "./styled";
 import Logo from "../../assents/logo.svg"
+import { goEndereco } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
+  const navigate = useNavigate()
+
+  const onSubmitCadastro = () => {
+    goEndereco(navigate)
+  }
+
   return (
     <ScreenContainer>
       <LogoImage src={Logo} alt={"Logo Labe Food"}/>
       <p>Cadastrar</p>
 
-      <form onSubmit={""}>
+      <form onSubmit={onSubmitCadastro}>
         <InputsContainer>
           <TextField
             label="Nome"
@@ -21,8 +29,6 @@ export default function Cadastro() {
             type="text"
             margin={"dense"}
             name={"username"}
-            value={""}
-            onChange={""}
             fullWidth
             required
             autoFocus
@@ -33,8 +39,6 @@ export default function Cadastro() {
             type="email"
             margin={"dense"}
             name={"email"}
-            value={""}
-            onChange={""}
             fullWidth
             required
           />
@@ -44,8 +48,6 @@ export default function Cadastro() {
             type="number"
             margin={"dense"}
             name={"number"}
-            value={""}
-            onChange={""}
             fullWidth
             required
           />
@@ -55,8 +57,6 @@ export default function Cadastro() {
             type="password"
             margin={"dense"}
             name={"password"}
-            value={""}
-            onChange={""}
             fullWidth
             required
           />
@@ -66,8 +66,6 @@ export default function Cadastro() {
             type="password"
             margin={"dense"}
             name={"password"}
-            value={""}
-            onChange={""}
             fullWidth
             required
           />
