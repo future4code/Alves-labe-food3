@@ -19,7 +19,7 @@ export default function Router() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />} />
-          <Route path="erro" element={<Erro/>}/>
+          <Route path="*" element={<Erro/>}/>
         </Routes>
       </BrowserRouter>
     </div>
