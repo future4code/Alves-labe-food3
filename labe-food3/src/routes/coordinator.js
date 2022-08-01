@@ -10,6 +10,10 @@ export const goLogin = navigate => {
     navigate('/cadastro')
     setPoke(poke)
   }
+
+  export const goEndereco = (navigate) => {
+    navigate('/endereco')
+  }
   
   export const goHome = navigate => {
     navigate('/home')
