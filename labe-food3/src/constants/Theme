@@ -1,0 +1,19 @@
+import { createTheme } from "@material-ui/core/styles";
+import { neutralColor, primaryColor, secundaryColor } from "./Colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: primaryColor,
+      contrastText: "white",
+    },
+    secondary: {
+      main: secundaryColor,
+    },
+    terciary: {
+        main: neutralColor,
+      },
+  },
+});
+
+export default theme;
