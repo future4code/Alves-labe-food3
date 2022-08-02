@@ -7,6 +7,7 @@ import Cadastro from "../pages/CadastroPage/Cadastro";
 import Home from "../pages/HomePage/Home";
 import Perfil from "../pages/PerfilPage/Perfil";
 import Erro from "../pages/ErroPage/Erro";
+import Endereco from "../pages/EnderecoPage/Endereco";
 
 export default function Router() {
   return (
@@ -17,6 +18,7 @@ export default function Router() {
           <Route index element={<Inicio/>} />
           <Route path="/login" element={< Login/>} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/endereco" element={<Endereco />} />
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />} />
           <Route path="*" element={<Erro/>}/>

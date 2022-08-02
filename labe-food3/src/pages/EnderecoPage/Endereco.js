@@ -4,28 +4,18 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
-import { ScreenContainer, InputsContainer, LogoImage } from "./styled";
-import Logo from "../../assents/logo.svg"
-import { goEndereco } from "../../routes/coordinator";
-import { useNavigate } from "react-router-dom";
+import { ScreenContainer, InputsContainer } from "./styled";
 
-export default function Cadastro() {
-  const navigate = useNavigate()
-
-  const onSubmitCadastro = () => {
-    goEndereco(navigate)
-  }
-
+const Endereco = () => {
   return (
     <ScreenContainer>
-      <LogoImage src={Logo} alt={"Logo Labe Food"}/>
-      <p>Cadastrar</p>
+      <p>Meu endereço</p>
 
-      <form onSubmit={onSubmitCadastro}>
+      <form>
         <InputsContainer>
           <TextField
-            label="Nome"
-            placeholder="Nome e sobrenome"
+            label="Logradouro"
+            placeholder="Rua / Av."
             type="text"
             margin={"dense"}
             name={"username"}
@@ -34,41 +24,49 @@ export default function Cadastro() {
             autoFocus
           />
           <TextField
-            label="E-mail"
-            placeholder="email@email.com"
-            type="email"
-            margin={"dense"}
-            name={"email"}
-            fullWidth
-            required
-          />
-          <TextField
-            label="CPF"
-            placeholder="000.000.000-00"
+            label="Número"
+            placeholder="Número"
             type="number"
             margin={"dense"}
-            name={"number"}
+            name={"numero"}
             fullWidth
             required
           />
           <TextField
-            label="Senha"
-            placeholder="Mínimo 6 caracteres"
-            type="password"
+            label="Complemento"
+            placeholder="Apto. / Bloco"
+            type="text"
             margin={"dense"}
-            name={"password"}
+            name={"complemento"}
+            fullWidth
+          />
+          <TextField
+            label="Bairro"
+            placeholder="Bairro"
+            type="text"
+            margin={"dense"}
+            name={"bairro"}
             fullWidth
             required
           />
           <TextField
-            label="Confirmar"
-            placeholder="Confirmar a senha anterior"
-            type="password"
+            label="Cidade"
+            placeholder="Cidade"
+            type="text"
             margin={"dense"}
-            name={"password"}
+            name={"cidade"}
             fullWidth
             required
           />
+          <TextField
+            label="Estado"
+            placeholder="Estado"
+            type="text"
+            margin={"dense"}
+            name={"estado"}
+            fullWidth
+            required
+          />          
         </InputsContainer>
 
         <Stack direction="column" spacing={2}>
@@ -84,10 +82,12 @@ export default function Cadastro() {
             type={"submit"}
             color={"primary"}
           >
-            Criar
+            Salvar
           </Button>
         </Stack>
       </form>
     </ScreenContainer>
   );
-}
+};
+
+export default Endereco;
