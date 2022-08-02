@@ -9,6 +9,10 @@ export const goLogin = navigate => {
   export const goCadastro = () => {
     navigate('/cadastro')
   }
+
+  export const goEndereco = (navigate) => {
+    navigate('/endereco')
+  }
   
   export const goHome = navigate => {
     navigate('/home')
