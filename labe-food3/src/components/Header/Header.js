@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import { HeaderBar, TitleBar } from "./Styled";
 
-export default function DenseAppBar() {
+export default function Header() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
