@@ -13,7 +13,7 @@ export default function Router() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route index element={<Inicio/>} />
           <Route path="/login" element={< Login/>} />

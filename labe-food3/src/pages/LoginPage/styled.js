@@ -1,19 +1,24 @@
+import { Button } from "@mui/material"
 import styled from "styled-components"
+
+
 
 export const LoginContainer = styled.div`
  display:flex;
  flex-direction: column;
- align-itens: center;
- width: 100vw;
+ align-items:center;
+ margin-top:14vh;
+
 `
 
 export const FormContainer = styled.div`
  display: flex;
  flex-direction: column;
  width: 80vw;
- max-width> 450px;
- align-items: center;
- margin-buttom: 20px;
+ max-width: 450px;
+ align-items: flex-end;
+ margin-bottom: 20px;
+ 
 `
 
 export const CadastroContainer = styled.div`
@@ -24,5 +29,30 @@ export const CadastroContainer = styled.div`
  align-items: center;
 `
 export const LogoImage = styled.img`
-margin-bottom: 5vh;
+width: 18vh;
+justify-content: center;
+align-items:center;
+margin-bottom:9vw;
+
+`
+
+export const SubTitle = styled.p`
+font-size:4.5vw;
+margin-top:2vw;
+
+`  
+
+export const ButtonLogin = styled.button`
+border:none;
+background-color:#FFFF;
+font-size:4.5vw;
+`
+
+export const ButtonGo = styled.button`
+border:none;
+background-color:#E8222E;
+font-size:4.5vw;
+padding: 1.5vh 19vh;
+margin-top:1vh;
+
 `
