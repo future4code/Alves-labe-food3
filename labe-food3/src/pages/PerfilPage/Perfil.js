@@ -51,6 +51,7 @@ export default function Perfil() {
           className={classes.imgEditIcon}
           >
           <img 
+          className={classes.imgEditIcon}
           src={EditIcon}
           alt="Edit"/>
           </IconButton>
