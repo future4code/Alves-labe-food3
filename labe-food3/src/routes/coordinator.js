@@ -6,7 +6,7 @@ export const goLogin = navigate => {
     navigate('/login')
   }
   
-  export const goCadastro = () => {
+  export const goCadastro = navigate => {
     navigate('/cadastro')
   }
 
