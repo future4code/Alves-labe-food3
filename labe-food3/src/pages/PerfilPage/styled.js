@@ -20,12 +20,13 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   imgEditIcon: {
-    display:'flex',
-    flexDirection:'row-reverse',
+    // display:'flex',
+    // flexDirection:'row-reverse',
     width: '1.7rem',
     height: '1.5rem',
     objectFit: 'contain',
-    position:'fixed',
+    // position:'fixed',
+    // left:'42vh'
 
   },
 
