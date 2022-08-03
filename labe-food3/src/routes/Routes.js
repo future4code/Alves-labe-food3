@@ -9,6 +9,7 @@ import Perfil from "../pages/PerfilPage/Perfil";
 import Erro from "../pages/ErroPage/Erro";
 import Endereco from "../pages/EnderecoPage/Endereco";
 import EditUsuario from  '../pages/PerfilPage/EditUsuário/EditUsuario'
+import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
 
 export default function Router() {
   return (
@@ -23,6 +24,7 @@ export default function Router() {
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />}/>
           <Route path="/edit/usuario" element={< EditUsuario />} />
+          <Route path="/edit/endereco" element={< EditEndereco />} />
           <Route path="*" element={<Erro/>}/>
         </Routes>
       </BrowserRouter>

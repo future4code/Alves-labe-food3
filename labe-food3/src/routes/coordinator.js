@@ -25,3 +25,12 @@ export const goLogin = navigate => {
   export const goBack = navigate => {
     navigate(-1)
   }
+
+  export const goToEditUsuario = (navigate) =>{
+    navigate('/edit/usuario')
+  
+  }
+
+  export const goToEditEndereco = (navigate) =>{
+    navigate('/edit/endereco')
+  }
