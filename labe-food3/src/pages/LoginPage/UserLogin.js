@@ -5,7 +5,7 @@ import { goHome } from "../../routes/coordinator"
 
 export const login = (body, clear, navigate, setRightButtonText, setIsLoading) => {
     setIsLoading(true)
-    axios.post(`${BASE_URL}/user/login`, body)
+    axios.post(`${BASE_URL}login`, body)
         .then((res) => {
             console.log(res.data.token)
             localStorage.setItem("token", res.data.token)
@@ -22,7 +22,7 @@ export const login = (body, clear, navigate, setRightButtonText, setIsLoading) =
 
 export const signUp = (body, clear, navigate, setRightButtonText, setIsLoading) => {
     setIsLoading(true)
-    axios.post(`${BASE_URL}/signup`, body)
+    axios.post(`${BASE_URL}signup`, body)
         .then((res) => {
             localStorage.setItem("token", res.data.token)
             clear()
