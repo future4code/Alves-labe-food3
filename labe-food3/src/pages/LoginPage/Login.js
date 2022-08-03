@@ -81,5 +81,5 @@ export default function Login({setRightButtonText}) {
         </ButtonLogin>
       </CadastroContainer>
     </LoginContainer>
-  );
+  )
 }
