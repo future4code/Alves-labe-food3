@@ -1,10 +1,6 @@
 import React from 'react'
-import { StatusCarrinho } from './style'
-import { DetalhesDoValor } from './style'
-import { Pagamento } from './style'
-import { ValorAPagar } from './style'
-
-import { Button } from '@mui/material';
+import { StatusCarrinho, DetalhesDoValor, Pagamento, ValorAPagar, DivStyle, Circulo, Button, DivButton, Preco } from './style'
+import Footer from '../Footer/Footer'
 
 
 export default function CarrinhoVazio() {
@@ -20,30 +16,23 @@ export default function CarrinhoVazio() {
                 </Pagamento>
                 <ValorAPagar>
                     <h4>Frete R$ 0,00</h4>
-                    <h3>R$ 0.00</h3>
+                    <Preco>R$ 0.00</Preco>
                 </ValorAPagar>
             </DetalhesDoValor>
             <section>
-                <div>
-                    <div>círculo</div>
+                <DivStyle>
+                    <Circulo></Circulo>
                     <h4>Dinheiro</h4>
-                </div>
-                <div>
-                    <div>círculo</div>
+                </DivStyle>
+                <DivStyle>
+                    <Circulo></Circulo>
                     <h4>Cartão de crédito</h4>
-                </div>
+                </DivStyle>
             </section>
-            <div>
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    margin="normal"
-                >
-                    Confirmar
-                </Button>
-            </div>
+            <DivButton>
+                <Button> Confirmar</Button>
+            </DivButton>
+            <Footer/>
         </div>
     )
 }
