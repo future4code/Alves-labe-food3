@@ -8,6 +8,7 @@ import Home from "../pages/HomePage/Home";
 import Perfil from "../pages/PerfilPage/Perfil";
 import Erro from "../pages/ErroPage/Erro";
 import Endereco from "../pages/EnderecoPage/Endereco";
+import Carrinho from "../pages/Carrinho/Carrinho";
 
 export default function Router() {
   return (
@@ -21,6 +22,7 @@ export default function Router() {
           <Route path="/endereco" element={<Endereco />} />
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />} />
+          <Route path="/carrinho" element={< Carrinho/>} />
           <Route path="*" element={<Erro/>}/>
         </Routes>
       </BrowserRouter>
