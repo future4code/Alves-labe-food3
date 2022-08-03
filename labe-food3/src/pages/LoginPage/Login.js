@@ -1,5 +1,5 @@
 import { Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goCadastro } from "../../routes/coordinator";
 import {
@@ -12,13 +12,20 @@ import {
   ButtonGo
 } from "./styled";
 import Logo from "../../assents/logo.svg";
+import { useForm } from "../../hooks/useForm";
+import { login } from "./UserLogin";
+import { useProtected } from "../../hooks/useProtected";
 
-export default function Login() {
-  const navigate = useNavigate();
+export default function Login({setRightButtonText}) {
+  const navigate = useNavigate()
+  useProtected()
+  const [form,onChange, clear] = useForm({email: "", password: ""})
+  const [isLoading, setIsLoading] = useState(false)
 
-  const onSubmitLogin = () => {
-    goCadastro(navigate);
-  };
+  const onSubmitLogin = (event) => {
+    event.preventDefault()
+    login(form, clear, navigate, setRightButtonText, setIsLoading)
+  }
 
   return (
     <LoginContainer>
@@ -28,6 +35,8 @@ export default function Login() {
         <FormContainer>
           <TextField
             name={"email"}
+            value={form.email}
+            onChange={onChange}
             label={"email@email.com"}
             fullWidth
             margin="normal"
@@ -37,6 +46,8 @@ export default function Login() {
           />
           <TextField
             name={"password"}
+            value={form.password}
+            onChange={onChange}
             label={"Mínimo 6 caracteres"}
             fullWidth
             margin="normal"
