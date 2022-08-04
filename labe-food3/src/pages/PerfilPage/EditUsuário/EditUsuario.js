@@ -1,23 +1,49 @@
 import React from 'react'
-import { Toolbar, TextField, Button} from '@mui/material';
+import { useForm } from '../../../hooks/useForm'
+import { TextField, Button} from '@mui/material';
 import { InputsContainer, ScreenContainer } from './styled'
 import Stack from "@mui/material/Stack";
+import { BASE_URL } from '../../../constants/urls';
+import axios from 'axios'
 
 function EditUsuario() {
+
+  const [form, onChange, clear] = useForm({name:'', email:'', cpf:''})
+
+
+  const onSubmitUser =() =>{
+    UpdateProfile()
+
+  }
+
+  const UpdateProfile = () =>{
+    axios.put(`${BASE_URL}profile`,form,{
+      headers:{
+        auth:localStorage.getItem('token')
+      }
+     }).then((resp) =>{
+      console.log(resp)
+     }).catch((err) =>{
+      console.log(err)
+     })
+  }
+
 
 
   return (
     <ScreenContainer>
         <p>Editar Perfil</p>
         <hr/>
-         <form>
+         <form onSubmit={onSubmitUser}>
          <InputsContainer>
           <TextField
             label="Nome"
+            value ={form.name}
+            onChange={onChange}
             placeholder="Nome e sobrenome"
             type="text"
             margin={"normal"}
-            name={"username"}
+            name={"name"}
             variant='outlined'
             fullWidth
             required
@@ -25,6 +51,8 @@ function EditUsuario() {
           />
           <TextField
             label="E-mail"
+            value={form.email}
+            onChange={onChange}
             placeholder="email@email.com"
             type="email"
             margin={"normal"}
@@ -35,10 +63,12 @@ function EditUsuario() {
           />
           <TextField
             label="CPF"
+            value={form.cpf}
+            onChange={onChange}
             placeholder="000.000.000-00"
             type="number"
             margin={"normal"}
-            name={"number"}
+            name={"cpf"}
             variant='outlined'
             fullWidth
             required
