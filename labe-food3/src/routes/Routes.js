@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from "../components/Header/Header";
 import Inicio from "../pages/InicialPage/Inicio";
 import Login from "../pages/LoginPage/Login";
 import Cadastro from "../pages/CadastroPage/Cadastro";
@@ -11,7 +10,8 @@ import Endereco from "../pages/EnderecoPage/Endereco";
 import EditUsuario from  '../pages/PerfilPage/EditUsuário/EditUsuario'
 import Carrinho from "../pages/Carrinho/Carrinho";
 import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
-import DetalhesPage from '../pages/DetalhesPage/DetalhesPage'
+import {DetalhesPage} from '../pages/DetalhesPage/DetalhesPage'
+
 
 export default function Router() {
   return (
