@@ -25,6 +25,7 @@ export default function Router() {
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />}/>
           <Route path="/edit/usuario" element={< EditUsuario />} />
+          <Route path="/home/restaurantes" element={< Detalhes />} />
           <Route path="/carrinho" element={< Carrinho/>} />
           <Route path="/edit/endereco" element={< EditEndereco />} />
           <Route path="*" element={<Erro/>}/>

@@ -35,9 +35,9 @@ export default function Login({setRightButtonText}) {
         <FormContainer>
           <TextField
             name={"email"}
+            label={"E-mail"}
             value={form.email}
             onChange={onChange}
-            label={"email@email.com"}
             fullWidth
             margin="normal"
             color="terciary"
@@ -46,9 +46,12 @@ export default function Login({setRightButtonText}) {
           />
           <TextField
             name={"password"}
+
+            label={"Senha"}
+
             value={form.password}
             onChange={onChange}
-            label={"Mínimo 6 caracteres"}
+
             fullWidth
             margin="normal"
             color="terciary"
