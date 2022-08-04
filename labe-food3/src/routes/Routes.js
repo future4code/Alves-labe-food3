@@ -12,6 +12,7 @@ import Carrinho from "../pages/Carrinho/Carrinho";
 import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
 import {DetalhesPage} from '../pages/DetalhesPage/DetalhesPage'
 
+
 export default function Router() {
   return (
     <div>
