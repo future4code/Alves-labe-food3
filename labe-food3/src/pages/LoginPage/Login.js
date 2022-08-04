@@ -28,7 +28,7 @@ export default function Login() {
         <FormContainer>
           <TextField
             name={"email"}
-            label={"email@email.com"}
+            label={"E-mail"}
             fullWidth
             margin="normal"
             color="terciary"
@@ -37,7 +37,7 @@ export default function Login() {
           />
           <TextField
             name={"password"}
-            label={"Mínimo 6 caracteres"}
+            label={"Senha"}
             fullWidth
             margin="normal"
             color="terciary"
