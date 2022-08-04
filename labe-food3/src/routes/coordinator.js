@@ -27,7 +27,7 @@ export const goLogin = navigate => {
   }
 
   export const goToEditUsuario = (navigate) =>{
-    navigate('/edit/usuario')
+    navigate('/editUser')
   
   }
 
