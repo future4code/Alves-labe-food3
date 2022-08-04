@@ -10,7 +10,7 @@ import Endereco from "../pages/EnderecoPage/Endereco";
 import EditUsuario from  '../pages/PerfilPage/EditUsuário/EditUsuario'
 import Carrinho from "../pages/Carrinho/Carrinho";
 import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
-import Detalhes from '../pages/DetalhesPage/DetalhesPage'
+import {DetalhesPage} from '../pages/DetalhesPage/DetalhesPage'
 
 export default function Router() {
   return (
@@ -25,7 +25,7 @@ export default function Router() {
           <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={< Perfil />}/>
           <Route path="/edit/usuario" element={< EditUsuario />} />
-          <Route path="/home/restaurantes" element={< Detalhes />} />
+          <Route path="/home/restaurantes" element={< DetalhesPage />} />
           <Route path="/carrinho" element={< Carrinho/>} />
           <Route path="/edit/endereco" element={< EditEndereco />} />
           <Route path="*" element={<Erro/>}/>

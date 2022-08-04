@@ -18,7 +18,7 @@ import Typography from "@material-ui/core/Typography";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { restaurant, setRestaurant, setColors} = useContext();
+  const [restaurant, setRestaurant]=UseState('')
   const { form, handleInputChange } = useForm({});
   const [food, setFood] = useState("");
   const [foodType, setFoodType] = useState("");
@@ -46,7 +46,7 @@ export default function Home() {
         },
       })
       .then((resposta) => {
-        console.log(resposta.data);
+       setRestaurant(resposta.data.restaurants)
       })
       .catch((erro) => {
         alert(erro.response.data.message);

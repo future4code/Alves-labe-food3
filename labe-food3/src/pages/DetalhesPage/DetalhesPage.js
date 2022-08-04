@@ -6,9 +6,10 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import useRequestData from '../../hooks/useRequestData'
 
-export default  DetalhesPage = (body, clear, setIsloading) => {
+export const DetalhesPage = (body, clear, setIsloading) => {
 
     const [restaurantDetail, setRestaurantDetail] = useState('')
+    const [details, setDetails] = useState("")
     const params = useParams()
     const restaurantDetails = useRequestData([], `${BASE_URL}/restaurants/${params.restaurantId}`)
     const detalhes = restaurantDetails.restaurant
