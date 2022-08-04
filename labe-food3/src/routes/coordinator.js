@@ -22,6 +22,10 @@ export const goLogin = navigate => {
     navigate('/perfil')
   }
 
+  export const gotoDetalhesPage = navigate => {
+    navigate('/home/restaurantes')
+  }
+
   export const goBack = navigate => {
     navigate(-1)
   }
