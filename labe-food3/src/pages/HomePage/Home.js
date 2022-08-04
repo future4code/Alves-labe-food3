@@ -1,5 +1,4 @@
 import React, {
-  useContext,
   useEffect,
   useLayoutEffect,
   useForm,
@@ -18,7 +17,8 @@ import Typography from "@material-ui/core/Typography";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [restaurant, setRestaurant]=UseState('')
+  const [colors, setColors] = useState('')
+  const [restaurant, setRestaurant]=useState('')
   const { form, handleInputChange } = useForm({});
   const [food, setFood] = useState("");
   const [foodType, setFoodType] = useState("");
