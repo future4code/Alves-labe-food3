@@ -11,7 +11,8 @@ function EditUsuario() {
   const [form, onChange, clear] = useForm({name:'', email:'', cpf:''})
 
 
-  const onSubmitUser =() =>{
+  const onSubmitUser =(event) =>{
+    event.preventDefault()
     UpdateProfile()
 
   }
@@ -66,7 +67,6 @@ function EditUsuario() {
             value={form.cpf}
             onChange={onChange}
             placeholder="000.000.000-00"
-            type="number"
             margin={"normal"}
             name={"cpf"}
             variant='outlined'
