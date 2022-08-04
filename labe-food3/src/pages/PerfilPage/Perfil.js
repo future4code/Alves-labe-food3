@@ -3,16 +3,14 @@ import { Typography, ListItem, ListItemSecondaryAction, Box, ListItemText, Grid,
 import {useNavigate} from 'react-router-dom'
 import { useStyles } from './styled'
 import EditIcon from '../../assets/editIcon.png'
+import { goToEditUsuario, goToEditEndereco } from '../../routes/coordinator'
 
 export default function Perfil() {
 
   const classes = useStyles();
   const navigate = useNavigate()
 
-const goToEditUsuario = () =>{
-  navigate('/edit/usuario')
 
-}
 
   return (
     <div>
@@ -33,7 +31,7 @@ const goToEditUsuario = () =>{
             <IconButton
               edge="end"
               aria-label="edit"
-              onClick = {goToEditUsuario}
+              onClick = {() => goToEditUsuario(navigate)}
             >
               <img
                 className={classes.imgEditIcon}
@@ -57,6 +55,7 @@ const goToEditUsuario = () =>{
             <IconButton
               edge="end"
               aria-label="edit"
+              onClick = {() => goToEditEndereco(navigate)}
             >
               <img
                 className={classes.imgEditIcon}
