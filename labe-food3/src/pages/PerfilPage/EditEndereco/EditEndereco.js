@@ -1,24 +1,57 @@
 import React from "react";
-
+import {useNavigate} from 'react-router-dom'
+import { useForm } from '../../../hooks/useForm'
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
-
+import {goPerfil} from '../../../routes/coordinator'
+import { BASE_URL } from '../../../constants/urls';
+import axios from 'axios'
 import { ScreenContainer, InputsContainer } from "./styled";
 
 const Endereco = () => {
+
+  const [form, onChange] = useForm({street:'', number:'', neighbourhood:'',city:'',state:'', complement:''})
+
+  const navigate = useNavigate()
+
+  const onSubmitAdress = (event) =>{
+    event.preventDefault()
+    UpdateAdress()
+    goPerfil(navigate)
+  }
+
+  const UpdateAdress = () =>{
+    axios.put(`${BASE_URL}address`,form,{
+      headers:{
+        auth:localStorage.getItem('token')
+      }
+     }).then((resp) =>{
+      localStorage.removeItem('token')
+      localStorage.setItem('token', resp.data.token)
+      alert('Endereço Atualizado')
+      document.location.reload(true)
+     }).catch((err) =>{
+      console.log(err)
+     })
+  }
+
+
+
   return (
     <ScreenContainer>
       <p>Editar Endereço</p>
 
-      <form>
+      <form onSubmit={onSubmitAdress}>
         <InputsContainer>
           <TextField
             label="Logradouro"
             placeholder="Rua / Av."
             type="text"
             margin={"dense"}
-            name={"username"}
+            name={"street"}
+            value={form.street}
+            onChange ={onChange}
             fullWidth
             required
             autoFocus
@@ -28,7 +61,9 @@ const Endereco = () => {
             placeholder="Número"
             type="number"
             margin={"dense"}
-            name={"numero"}
+            name={"number"}
+            value={form.number}
+            onChange ={onChange}
             fullWidth
             required
           />
@@ -37,7 +72,9 @@ const Endereco = () => {
             placeholder="Apto. / Bloco"
             type="text"
             margin={"dense"}
-            name={"complemento"}
+            name={"complement"}
+            value={form.complement}
+            onChange ={onChange}
             fullWidth
           />
           <TextField
@@ -45,7 +82,9 @@ const Endereco = () => {
             placeholder="Bairro"
             type="text"
             margin={"dense"}
-            name={"bairro"}
+            name={"neighbourhood"}
+            value={form.neighbourhood}
+            onChange ={onChange}
             fullWidth
             required
           />
@@ -54,7 +93,9 @@ const Endereco = () => {
             placeholder="Cidade"
             type="text"
             margin={"dense"}
-            name={"cidade"}
+            name={"city"}
+            value={form.city}
+            onChange ={onChange}
             fullWidth
             required
           />
@@ -63,7 +104,9 @@ const Endereco = () => {
             placeholder="Estado"
             type="text"
             margin={"dense"}
-            name={"estado"}
+            name={"state"}
+            value={form.state}
+            onChange ={onChange}
             fullWidth
             required
           />          
