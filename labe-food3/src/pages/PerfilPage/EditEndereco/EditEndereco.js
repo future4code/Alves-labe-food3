@@ -1,15 +1,16 @@
 import React from "react";
-
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
+import { ButtonGo, Title } from "./styled";
 import Stack from "@mui/material/Stack";
 
 import { ScreenContainer, InputsContainer } from "./styled";
+import Header from "../../../components/Header/Header";
 
 const Endereco = () => {
   return (
     <ScreenContainer>
-      <p>Editar Endereço</p>
+      <Header/>
+      <Title><b>Editar Endereço</b></Title>
 
       <form>
         <InputsContainer>
@@ -66,24 +67,20 @@ const Endereco = () => {
             name={"estado"}
             fullWidth
             required
-          />          
+          />
         </InputsContainer>
 
         <Stack direction="column" spacing={2}>
-          <Button
-            sx={{
-              height: 51,
-              boxShadow: 0,
-              color: "white",
-            }}
+        <ButtonGo
+            type="submit"
             fullWidth
-            size={"large"}
-            variant={"contained"}
-            type={"submit"}
-            color={"primary"}
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
           >
-            Salvar
-          </Button>
+          <b>Salvar</b> 
+          </ButtonGo>
         </Stack>
       </form>
     </ScreenContainer>

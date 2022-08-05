@@ -1,24 +1,22 @@
 import React from "react";
-
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
-
 import { ScreenContainer, InputsContainer, LogoImage } from "./styled";
-import Logo from "../../assents/logo.svg"
+import Logo from "../../assents/logo.svg";
 import { goEndereco } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onSubmitCadastro = () => {
-    goEndereco(navigate)
-  }
+    goEndereco(navigate);
+  };
 
   return (
     <ScreenContainer>
-      <LogoImage src={Logo} alt={"Logo Labe Food"}/>
+      <LogoImage src={Logo} alt={"Logo Labe Food"} />
       <p>Cadastrar</p>
 
       <form onSubmit={onSubmitCadastro}>

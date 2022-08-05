@@ -12,4 +12,5 @@ background-color:white;
 display:flex;
 flex-direction:center;
 justify-content:center;
+width:150vw;
 `

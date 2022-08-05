@@ -1,51 +1,49 @@
-import React from 'react'
-import { useForm } from '../../../hooks/useForm'
-import { TextField, Button} from '@mui/material';
-import { InputsContainer, ScreenContainer } from './styled'
+import React from "react";
+import { useForm } from "../../../hooks/useForm";
+import { TextField, Button } from "@mui/material";
+import { InputsContainer, ScreenContainer } from "./styled";
 import Stack from "@mui/material/Stack";
-import { BASE_URL } from '../../../constants/urls';
-import axios from 'axios'
+import { BASE_URL } from "../../../constants/urls";
+import axios from "axios";
 
 function EditUsuario() {
+  const [form, onChange, clear] = useForm({ name: "", email: "", cpf: "" });
 
-  const [form, onChange, clear] = useForm({name:'', email:'', cpf:''})
+  const onSubmitUser = (event) => {
+    event.preventDefault();
+    UpdateProfile();
+  };
 
-
-  const onSubmitUser =(event) =>{
-    event.preventDefault()
-    UpdateProfile()
-
-  }
-
-  const UpdateProfile = () =>{
-    axios.put(`${BASE_URL}profile`,form,{
-      headers:{
-        auth:localStorage.getItem('token')
-      }
-     }).then((resp) =>{
-      console.log(resp)
-     }).catch((err) =>{
-      console.log(err)
-     })
-  }
-
-
+  const UpdateProfile = () => {
+    axios
+      .put(`${BASE_URL}profile`, form, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <ScreenContainer>
-        <p>Editar Perfil</p>
-        <hr/>
-         <form onSubmit={onSubmitUser}>
-         <InputsContainer>
+      <p>Editar Perfil</p>
+      <hr />
+      <form onSubmit={onSubmitUser}>
+        <InputsContainer>
           <TextField
             label="Nome"
-            value ={form.name}
+            value={form.name}
             onChange={onChange}
             placeholder="Nome e sobrenome"
             type="text"
             margin={"normal"}
             name={"name"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
             autoFocus
@@ -58,7 +56,7 @@ function EditUsuario() {
             type="email"
             margin={"normal"}
             name={"email"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
           />
@@ -69,13 +67,13 @@ function EditUsuario() {
             placeholder="000.000.000-00"
             margin={"normal"}
             name={"cpf"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
           />
-          </InputsContainer>
+        </InputsContainer>
 
-          <Stack direction="column" spacing={2}>
+        <Stack direction="column" spacing={2}>
           <Button
             sx={{
               height: 51,
@@ -91,9 +89,9 @@ function EditUsuario() {
             Salvar
           </Button>
         </Stack>
-          </form>
+      </form>
     </ScreenContainer>
-  )
+  );
 }
 
-export default EditUsuario
+export default EditUsuario;

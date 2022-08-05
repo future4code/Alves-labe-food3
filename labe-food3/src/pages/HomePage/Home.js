@@ -31,12 +31,12 @@ export default function Home() {
   useLayoutEffect(() => {
     setColors.setColor("#cb4646");
     setColors.setColorCrd("");
-    setColors.setColorPrifile("");
+    setColors.setColorProfile("");
   }, []);
 
   useEffect(() => {
     GetRestaurantes();
-  });
+  },[]);
 
   const GetRestaurantes = () => {
     axios
