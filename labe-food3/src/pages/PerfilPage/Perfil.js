@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import { useStyles } from './styled'
 import EditIcon from '../../assets/editIcon.png'
 import { goToEditUsuario, goToEditEndereco } from '../../routes/coordinator'
+import Footer from "../../components/Footer/Footer";
 import { BASE_URL } from '../../constants/urls'
 import axios from 'axios'
 
@@ -134,6 +135,7 @@ const GetActiveOrder = () =>{
           </Typography>
         </Grid>
       </List>
+      <Footer/>
     </div>
   )
 }

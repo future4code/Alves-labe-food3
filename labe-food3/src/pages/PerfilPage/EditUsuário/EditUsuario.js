@@ -1,19 +1,23 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import { TextField, Button} from '@mui/material';
 import { InputsContainer, ScreenContainer } from './styled'
 import Stack from "@mui/material/Stack";
+import {goPerfil} from '../../../routes/coordinator'
 import { BASE_URL } from '../../../constants/urls';
 import axios from 'axios'
 
 function EditUsuario() {
 
-  const [form, onChange, clear] = useForm({name:'', email:'', cpf:''})
+  const [form, onChange] = useForm({name:'', email:'', cpf:''})
+  const navigate = useNavigate()
 
 
   const onSubmitUser =(event) =>{
     event.preventDefault()
     UpdateProfile()
+    goPerfil(navigate)
 
   }
 
@@ -23,7 +27,8 @@ function EditUsuario() {
         auth:localStorage.getItem('token')
       }
      }).then((resp) =>{
-      console.log(resp)
+      alert('Cadastro Atualizado')
+      document.location.reload(true)
      }).catch((err) =>{
       console.log(err)
      })
