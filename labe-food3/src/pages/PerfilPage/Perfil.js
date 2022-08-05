@@ -11,7 +11,7 @@ import axios from 'axios'
 export default function Perfil() {
 
   const [users, setUsers] = useState({})
-  const [order, setOrder] = useState([])
+  const [history, setHistory] = useState([])
 
   const classes = useStyles();
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ export default function Perfil() {
 
 useEffect(() => {
   getProfile()
-  GetActiveOrder()
+  OrdersHistory()
 },[])
 
 const getProfile = () =>{
@@ -35,20 +35,48 @@ const getProfile = () =>{
 
 }
 
-const GetActiveOrder = () =>{
-  axios.get(`${BASE_URL}active-order`,{
+const OrdersHistory = () =>{
+  axios.get(`${BASE_URL}orders/history`,{
     headers:{
       auth:localStorage.getItem('token')
     }
   }).then((resp) =>{
-    setOrder(resp.data.order)
+    setHistory(resp.data.orders)
   }).catch((err) =>{
     console.log(err)
   })
 
 }
 
+console.log(history)
 
+const ListHistory = history && history.map((OrderHistory) =>{
+  const date = new Date(OrderHistory.expiresAt).toLocaleDateString(
+    "pt-br"
+  );
+
+    return (
+      <Grid container className={classes.ordersInnerGrid}>
+      <Grid
+        item
+        xs={12}
+        className={classes.orderGridItem}
+      >
+        <Paper className={classes.withPadding}>
+          <Typography className={classes.restaurantText}>
+            {OrderHistory.restaurantName}
+          </Typography>
+          <Typography className={classes.dateText}>
+            {date}
+          </Typography>
+          <Typography className={classes.totalPriceText}>
+            SUBTOTAL: {OrderHistory.totalPrice.toFixed(2)}R$
+          </Typography>
+        </Paper>
+      </Grid>
+    </Grid>
+    )
+})
 
   return (
     <div>
@@ -111,27 +139,7 @@ const GetActiveOrder = () =>{
         </Grid>
         <Grid item xs={12} className={classes.orderGridItem}>
           <Typography inline="true" align="center">
-            {order === null? 'Você não realizou nenhum pedido' : (
-              <Grid container className={classes.ordersInnerGrid}>
-              <Grid
-                item
-                xs={12}
-                className={classes.orderGridItem}
-              >
-                <Paper className={classes.withPadding}>
-                  <Typography className={classes.restaurantText}>
-                    Bullguer Vila Madalena
-                  </Typography>
-                  <Typography className={classes.dateText}>
-                    23 outubro 2019
-                  </Typography>
-                  <Typography className={classes.totalPriceText}>
-                    SUBTOTAL R$67,00
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-            )}
+            {history.length === 0? 'Você não realizou nenhum pedido' : ListHistory}
           </Typography>
         </Grid>
       </List>
