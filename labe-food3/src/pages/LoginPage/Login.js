@@ -57,6 +57,7 @@ export default function Login({setRightButtonText}) {
             color="terciary"
             required
             type={"password"}
+            pattern={"^.{6,}"}
           />
 
           <ButtonGo
