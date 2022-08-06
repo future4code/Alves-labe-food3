@@ -22,6 +22,10 @@ export const goLogin = navigate => {
     navigate('/perfil')
   }
 
+  export const goToCarrinho = navigate =>{
+    navigate('/carrinho')
+  }
+
   export const gotoDetalhesPage = navigate => {
     navigate('/home/restaurantes')
   }

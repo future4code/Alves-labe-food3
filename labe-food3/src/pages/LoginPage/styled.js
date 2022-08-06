@@ -1,4 +1,3 @@
-import { Button } from "@mui/material"
 import styled from "styled-components"
 
 
@@ -42,17 +41,3 @@ margin-top:2vw;
 
 `  
 
-export const ButtonLogin = styled.button`
-border:none;
-background-color:#FFFF;
-font-size:4.5vw;
-`
-
-export const ButtonGo = styled.button`
-border:none;
-background-color:#E8222E;
-font-size:4.5vw;
-padding: 1.5vh 19vh;
-margin-top:1vh;
-
-`

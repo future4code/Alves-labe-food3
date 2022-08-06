@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ScreenContainer = styled.div`
 	width: 100%;
-	min-height: 90vh;
+	min-height: 80vh;
 
     display: flex;
 	flex-direction: column;
