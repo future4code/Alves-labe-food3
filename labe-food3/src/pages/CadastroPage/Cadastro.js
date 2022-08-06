@@ -1,4 +1,5 @@
 import React from "react";
+import Header from '../../components/Header/Header'
 
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
@@ -17,10 +18,10 @@ export default function Cadastro() {
   }
 
   return (
+    <div>
+    <Header title ='Cadastrar' back ='true'/>
     <ScreenContainer>
       <LogoImage src={Logo} alt={"Logo Labe Food"}/>
-      <p>Cadastrar</p>
-
       <form onSubmit={onSubmitCadastro}>
         <InputsContainer>
           <TextField
@@ -89,5 +90,6 @@ export default function Cadastro() {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import { useForm } from '../../../hooks/useForm'
 import { TextField, Button} from '@mui/material';
 import { InputsContainer, ScreenContainer } from './styled'
+import Header from '../../../components/Header/Header'
 import Stack from "@mui/material/Stack";
 import {goPerfil} from '../../../routes/coordinator'
 import { BASE_URL } from '../../../constants/urls';
@@ -37,8 +38,9 @@ function EditUsuario() {
 
 
   return (
+    <div>
+    <Header title ='Editar Perfil' back = 'true'/>
     <ScreenContainer>
-        <p>Editar Perfil</p>
         <hr/>
          <form onSubmit={onSubmitUser}>
          <InputsContainer>
@@ -98,6 +100,7 @@ function EditUsuario() {
         </Stack>
           </form>
     </ScreenContainer>
+    </div>
   )
 }
 

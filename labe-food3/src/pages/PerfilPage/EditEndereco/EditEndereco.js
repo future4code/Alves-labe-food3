@@ -4,6 +4,7 @@ import { useForm } from '../../../hooks/useForm'
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import Header from '../../../components/Header/Header'
 import {goPerfil} from '../../../routes/coordinator'
 import { BASE_URL } from '../../../constants/urls';
 import axios from 'axios'
@@ -39,9 +40,9 @@ const Endereco = () => {
 
 
   return (
-    <ScreenContainer>
-      <p>Editar Endereço</p>
-
+    <div>
+    <Header title ='Editar Perfil' back = 'true'/>
+    <ScreenContainer> 
       <form onSubmit={onSubmitAdress}>
         <InputsContainer>
           <TextField
@@ -130,6 +131,7 @@ const Endereco = () => {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
   );
 };
 

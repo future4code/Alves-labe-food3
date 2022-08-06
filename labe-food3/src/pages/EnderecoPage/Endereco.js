@@ -1,5 +1,5 @@
 import React from "react";
-
+import Header from '../../components/Header/Header'
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -8,9 +8,9 @@ import { ScreenContainer, InputsContainer } from "./styled";
 
 const Endereco = () => {
   return (
+    <div>
+      <Header title ='Cadastrar' back ='true'/>
     <ScreenContainer>
-      <p>Meu endereço</p>
-
       <form>
         <InputsContainer>
           <TextField
@@ -87,6 +87,7 @@ const Endereco = () => {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
   );
 };
 

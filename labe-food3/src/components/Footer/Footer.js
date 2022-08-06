@@ -1,4 +1,6 @@
 import React from "react";
+import {useNavigate} from 'react-router-dom'
+import {goHome, goToCarrinho, goPerfil} from '../../routes/coordinator'
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HouseOutlinedIcon from "@mui/icons-material/HouseOutlined";
@@ -8,11 +10,26 @@ import { PaperFooter } from "./Styled";
 
 
 export default function Footer() {
-  const [value, setValue] = React.useState("recents");
+  const [value, setValue] = React.useState("");
+  const navigate = useNavigate()
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+ switch (value){
+  case "home":
+    goHome(navigate)
+    break
+  case "carrinho":
+    goToCarrinho(navigate)
+    break
+  case "perfil":
+    goPerfil(navigate)
+    
+  
+
+ }
 
   return (
    
@@ -24,17 +41,17 @@ export default function Footer() {
       >
         <BottomNavigationAction
           color="terciary"
-          value="recents"
+          value="home"
           icon={<HouseOutlinedIcon sx={{ fontSize: 36 }}/>}
         />
         <BottomNavigationAction
           color="terciary"
-          value="favorites"
+          value="carrinho"
           icon={<LocalGroceryStoreOutlinedIcon sx={{ fontSize: 36 }} />}
         />
         <BottomNavigationAction
           color="terciary"
-          value="nearby"
+          value="perfil"
           icon={<AccountCircleOutlinedIcon sx={{ fontSize: 36 }} />}
         />
        
