@@ -1,17 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
-import { TextField, Button } from "@mui/material";
-import { InputsContainer, ScreenContainer } from "./styled";
+import { TextField } from "@mui/material";
+import { InputsContainer, ScreenContainer, ButtonGo } from "./styled";
 import Stack from "@mui/material/Stack";
+import { goPerfil } from "../../../routes/coordinator";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
 
 function EditUsuario() {
-  const [form, onChange, clear] = useForm({ name: "", email: "", cpf: "" });
+  const [form, onChange] = useForm({ name: "", email: "", cpf: "" });
+  const navigate = useNavigate();
 
   const onSubmitUser = (event) => {
     event.preventDefault();
     UpdateProfile();
+    goPerfil(navigate);
   };
 
   const UpdateProfile = () => {
@@ -22,7 +26,8 @@ function EditUsuario() {
         },
       })
       .then((resp) => {
-        console.log(resp);
+        alert("Cadastro Atualizado");
+        document.location.reload(true);
       })
       .catch((err) => {
         console.log(err);
@@ -74,20 +79,16 @@ function EditUsuario() {
         </InputsContainer>
 
         <Stack direction="column" spacing={2}>
-          <Button
-            sx={{
-              height: 51,
-              boxShadow: 0,
-              color: "white",
-            }}
+          <ButtonGo
+            type="submit"
             fullWidth
-            size={"large"}
-            variant={"contained"}
-            type={"submit"}
-            color={"primary"}
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
           >
-            Salvar
-          </Button>
+            <b>Salvar</b>
+          </ButtonGo>
         </Stack>
       </form>
     </ScreenContainer>

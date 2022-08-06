@@ -1,7 +1,6 @@
 import React, {
   useEffect,
   useLayoutEffect,
-  useForm,
   useState,
 } from "react";
 import Footer from "../../components/Footer/Footer";
@@ -13,11 +12,11 @@ import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { BASE_URL } from "../../constants/urls";
 import Typography from "@material-ui/core/Typography";
+import {useForm} from '../../hooks/useForm'
 
 
 export default function Home() {
   const navigate = useNavigate();
-  const [colors, setColors] = useState('')
   const [restaurant, setRestaurant]=useState('')
   const { form, handleInputChange } = useForm({});
   const [food, setFood] = useState("");
@@ -28,11 +27,13 @@ export default function Home() {
     gotoDetalhesPage(navigate, id);
   };
 
-  useLayoutEffect(() => {
-    setColors.setColor("#cb4646");
-    setColors.setColorCrd("");
-    setColors.setColorProfile("");
-  }, []);
+
+  // useLayoutEffect(() => {
+  //   setColors.setColor("#cb4646");
+  //   setColors.setColorCrd("");
+  //   setColors.setColorPrifile("");
+  // }, []);
+
 
   useEffect(() => {
     GetRestaurantes();
@@ -40,7 +41,7 @@ export default function Home() {
 
   const GetRestaurantes = () => {
     axios
-      .get(`${BASE_URL}/resturants`, {
+      .get(`${BASE_URL}restaurants`, {
         headers: {
           auth: token,
         },
@@ -52,6 +53,7 @@ export default function Home() {
         alert(erro.response.data.message);
       });
   };
+
 
   const onChangeFood = (value) => {
     setFood(value);
@@ -174,7 +176,7 @@ export default function Home() {
           <SearchGroup>
             <ImputSearch
               name="restaurant"
-              value={form.restaurant}
+              // value={form.restaurant}
               onChange={handleInputChange}
               type="search"
               id="outlined-basic"
@@ -193,7 +195,7 @@ export default function Home() {
             />
           </SearchGroup>
         </form>
-        {form.restaurant === "" ? (
+        {/* {form.restaurant === "" ? (
           <TypesStyled>  
             <Typography
               color={foodType === 1 ? "secondary" : "primary"}
@@ -260,7 +262,7 @@ export default function Home() {
         totalPrice={foodType.totalPrice}/>}
           
    
-        </div>
+        </div> */}
 
         <Footer />
       </main>

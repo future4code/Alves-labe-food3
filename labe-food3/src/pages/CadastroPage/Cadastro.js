@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import { ScreenContainer, InputsContainer, LogoImage } from "./styled";
+import { ScreenContainer, InputsContainer, LogoImage, ButtonGo } from "./styled";
 import Logo from "../../assents/logo.svg";
 import { goEndereco } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export default function Cadastro() {
   return (
     <ScreenContainer>
       <LogoImage src={Logo} alt={"Logo Labe Food"} />
-      <p>Cadastrar</p>
+      <p><b>Cadastrar</b></p>
 
       <form onSubmit={onSubmitCadastro}>
         <InputsContainer>
@@ -70,20 +70,16 @@ export default function Cadastro() {
         </InputsContainer>
 
         <Stack direction="column" spacing={2}>
-          <Button
-            sx={{
-              height: 51,
-              boxShadow: 0,
-              color: "white",
-            }}
+        <ButtonGo
+            type="submit"
             fullWidth
-            size={"large"}
-            variant={"contained"}
-            type={"submit"}
-            color={"primary"}
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
           >
-            Criar
-          </Button>
+          <b>Criar</b>  
+          </ButtonGo>
         </Stack>
       </form>
     </ScreenContainer>

@@ -39,6 +39,7 @@ export const ButtonLogin = styled.button`
   border: none;
   background-color: #ffff;
   font-size: 4.5vw;
+  color:#e8222e;
 `;
 
 export const ButtonGo = styled.button`

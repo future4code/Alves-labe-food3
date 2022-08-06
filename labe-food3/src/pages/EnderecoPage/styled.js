@@ -21,3 +21,11 @@ export const InputsContainer = styled.div`
 
     margin: 15px 0;
 `;
+
+export const ButtonGo = styled.button`
+  border: none;
+  background-color: #e8222e;
+  font-size: 4.5vw;
+  padding: 1.5vh 19vh;
+  margin-top: 1vh;
+`;

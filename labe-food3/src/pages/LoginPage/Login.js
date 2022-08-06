@@ -30,7 +30,7 @@ export default function Login({ setRightButtonText }) {
   return (
     <LoginContainer>
       <LogoImage src={Logo} alt={"Logo Labefood"} />
-      <SubTitle>Entrar</SubTitle>
+      <SubTitle><b>Entrar</b></SubTitle>
       <form onSubmit={onSubmitLogin}>
         <FormContainer>
           <TextField
@@ -54,6 +54,7 @@ export default function Login({ setRightButtonText }) {
             color="terciary"
             required
             type={"password"}
+            pattern={"^.{6,}"}
           />
 
           <ButtonGo
@@ -64,7 +65,7 @@ export default function Login({ setRightButtonText }) {
             margin="normal"
             font-color="secondary"
           >
-            Entrar
+          <b>Entrar</b>  
           </ButtonGo>
         </FormContainer>
       </form>
