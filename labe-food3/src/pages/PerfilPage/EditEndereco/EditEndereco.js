@@ -1,16 +1,59 @@
 import React from "react";
-import {useNavigate} from 'react-router-dom'
-import { useForm } from '../../../hooks/useForm'
+import { useNavigate } from "react-router-dom";
+import { useForm } from "../../../hooks/useForm";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
+import { ButtonGo, Title } from "./styled";
 import Stack from "@mui/material/Stack";
+import { goPerfil } from "../../../routes/coordinator";
+import { BASE_URL } from "../../../constants/urls";
+import axios from "axios";
 import Header from '../../../components/Header/Header'
-import {goPerfil} from '../../../routes/coordinator'
-import { BASE_URL } from '../../../constants/urls';
-import axios from 'axios'
 import { ScreenContainer, InputsContainer } from "./styled";
 
 const Endereco = () => {
+
+  const [form, onChange] = useForm({
+    street: "",
+    number: "",
+    neighbourhood: "",
+    city: "",
+    state: "",
+    complement: "",
+  });
+
+  const navigate = useNavigate();
+
+  const onSubmitAdress = (event) => {
+    event.preventDefault();
+    UpdateAdress();
+    goPerfil(navigate);
+  };
+
+  const UpdateAdress = () => {
+    axios
+      .put(`${BASE_URL}address`, form, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((resp) => {
+        localStorage.removeItem("token");
+        localStorage.setItem("token", resp.data.token);
+        alert("Endereço Atualizado");
+        document.location.reload(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <ScreenContainer>
+      <Header />
+      <Title>
+        <b>Editar Endereço</b>
+      </Title>
+
 
   const [form, onChange] = useForm({street:'', number:'', neighbourhood:'',city:'',state:'', complement:''})
 
@@ -52,7 +95,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"street"}
             value={form.street}
-            onChange ={onChange}
+
+            onChange={onChange}
             fullWidth
             required
             autoFocus
@@ -65,6 +109,7 @@ const Endereco = () => {
             name={"number"}
             value={form.number}
             onChange ={onChange}
+
             fullWidth
             required
           />
@@ -76,6 +121,7 @@ const Endereco = () => {
             name={"complement"}
             value={form.complement}
             onChange ={onChange}
+
             fullWidth
           />
           <TextField
@@ -86,6 +132,7 @@ const Endereco = () => {
             name={"neighbourhood"}
             value={form.neighbourhood}
             onChange ={onChange}
+
             fullWidth
             required
           />
@@ -97,6 +144,7 @@ const Endereco = () => {
             name={"city"}
             value={form.city}
             onChange ={onChange}
+
             fullWidth
             required
           />
@@ -107,27 +155,24 @@ const Endereco = () => {
             margin={"dense"}
             name={"state"}
             value={form.state}
-            onChange ={onChange}
+          onChange ={onChange}
+
             fullWidth
             required
-          />          
+          />
         </InputsContainer>
 
         <Stack direction="column" spacing={2}>
-          <Button
-            sx={{
-              height: 51,
-              boxShadow: 0,
-              color: "white",
-            }}
+          <ButtonGo
+            type="submit"
             fullWidth
-            size={"large"}
-            variant={"contained"}
-            type={"submit"}
-            color={"primary"}
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
           >
-            Salvar
-          </Button>
+            <b>Salvar</b>
+          </ButtonGo>
         </Stack>
       </form>
     </ScreenContainer>

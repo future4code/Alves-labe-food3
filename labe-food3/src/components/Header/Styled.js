@@ -12,7 +12,11 @@ export const HeaderBar = styled(Toolbar)`
 padding-bottom:2vw;
 background-color:white;
 display:flex;
-justify-content: center;
+flex-direction:center;
+justify-content:center;
+width:150vw;
+`
+
 
 
 `
@@ -23,3 +27,4 @@ export const BackButton = styled(ArrowBackIosIcon)`
   right:48%;
   cursor: pointer;
 `;
+

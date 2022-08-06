@@ -1,15 +1,26 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom'
-import { useForm } from '../../../hooks/useForm'
-import { TextField, Button} from '@mui/material';
-import { InputsContainer, ScreenContainer } from './styled'
-import Header from '../../../components/Header/Header'
+
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "../../../hooks/useForm";
+import { TextField } from "@mui/material";
+import { InputsContainer, ScreenContainer, ButtonGo } from "./styled";
 import Stack from "@mui/material/Stack";
-import {goPerfil} from '../../../routes/coordinator'
-import { BASE_URL } from '../../../constants/urls';
-import axios from 'axios'
+import { goPerfil } from "../../../routes/coordinator";
+import { BASE_URL } from "../../../constants/urls";
+import axios from "axios";
+
+
 
 function EditUsuario() {
+  const [form, onChange] = useForm({ name: "", email: "", cpf: "" });
+  const navigate = useNavigate();
+
+
+  const onSubmitUser = (event) => {
+    event.preventDefault();
+    UpdateProfile();
+    goPerfil(navigate);
+  };
 
   const [form, onChange] = useForm({name:'', email:'', cpf:''})
   const navigate = useNavigate()
@@ -36,23 +47,45 @@ function EditUsuario() {
   }
 
 
+  const UpdateProfile = () => {
+    axios
+      .put(`${BASE_URL}profile`, form, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((resp) => {
+        alert("Cadastro Atualizado");
+        document.location.reload(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
     <Header title ='Editar Perfil' back = 'true'/>
     <ScreenContainer>
+
+      <p>Editar Perfil</p>
+      <hr />
+      <form onSubmit={onSubmitUser}>
+        <InputsContainer>
+
         <hr/>
          <form onSubmit={onSubmitUser}>
          <InputsContainer>
+
           <TextField
             label="Nome"
-            value ={form.name}
+            value={form.name}
             onChange={onChange}
             placeholder="Nome e sobrenome"
             type="text"
             margin={"normal"}
             name={"name"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
             autoFocus
@@ -65,7 +98,7 @@ function EditUsuario() {
             type="email"
             margin={"normal"}
             name={"email"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
           />
@@ -76,32 +109,32 @@ function EditUsuario() {
             placeholder="000.000.000-00"
             margin={"normal"}
             name={"cpf"}
-            variant='outlined'
+            variant="outlined"
             fullWidth
             required
           />
-          </InputsContainer>
+        </InputsContainer>
 
-          <Stack direction="column" spacing={2}>
-          <Button
-            sx={{
-              height: 51,
-              boxShadow: 0,
-              color: "white",
-            }}
+        <Stack direction="column" spacing={2}>
+          <ButtonGo
+            type="submit"
             fullWidth
-            size={"large"}
-            variant={"contained"}
-            type={"submit"}
-            color={"primary"}
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
           >
-            Salvar
-          </Button>
+            <b>Salvar</b>
+          </ButtonGo>
         </Stack>
-          </form>
+      </form>
     </ScreenContainer>
+
+  );
+
     </div>
   )
+
 }
 
-export default EditUsuario
+export default EditUsuario;

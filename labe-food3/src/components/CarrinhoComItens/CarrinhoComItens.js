@@ -1,10 +1,18 @@
 import React from 'react'
 import CardProduto from './CardProduto/CardProduto'
-import { NomeRestaurante, DivPai, InfoRestaurante } from './style'
-import { DetalhesDoValor, Pagamento, ValorAPagar, Preco, DivStyle, Circulo, FormaDePagamento, DivButton, Button } from './style'
-import Footer from '../Footer/Footer'
+import { NomeRestaurante, DivPai, InfoRestaurante, RadioGroupo, FormControle, DetalhesDoValor, Pagamento, ValorAPagar, Preco,} from './style'
+import  FormControlLabel  from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import { useState } from 'react'
+import FormControl from '@material-ui/core/FormControl';
 
 export default function CarrinhoComItens() {
+  const [value, setValue] = useState('dinheiro');
+  
+    const handleChange = (event) => {
+      setValue(event.target.value);
+    };
+
   return (
     <DivPai>
       <InfoRestaurante>
@@ -12,7 +20,9 @@ export default function CarrinhoComItens() {
         <p>R. Fradique Coutinho, 1136 - Villa Madalena</p>
         <p>30 - 45 min</p>
       </InfoRestaurante>
+      <CardProduto />
       {/* <CardProduto /> */}
+
       {/* <CardProduto /> */}
       <CardProduto />
       <DetalhesDoValor>
@@ -25,21 +35,23 @@ export default function CarrinhoComItens() {
           <Preco>R$ 0.00</Preco>
         </ValorAPagar>
       </DetalhesDoValor>
-      <FormaDePagamento>
-        <DivStyle>
-          <Circulo></Circulo>
-          <h4>Dinheiro</h4>
-        </DivStyle>
-        <DivStyle>
-          <Circulo></Circulo>
-          <h4>Cartão de crédito</h4>
-        </DivStyle>
-        <DivButton>
-        <Button>Confirmar</Button>
-       </DivButton>
-      </FormaDePagamento>
+      <FormControl >
+       
+      <RadioGroupo
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+        value={value}
+        onChange={handleChange}
+      >
+        
+        <FormControlLabel value="dinheiro" control={<Radio color='secundary' />} label="Dinheiro" />
+        <FormControlLabel value="cartao" control={<Radio color='secundary'/>} label="Cartão de crédito" />
      
-      <Footer />
+     </RadioGroupo>
+
+    </FormControl>
+     
     </DivPai>
   )
 }
+

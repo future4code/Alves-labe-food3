@@ -7,6 +7,9 @@ import {
   FormContainer,
   LoginContainer,
   LogoImage,
+  SubTitle,
+  ButtonGo,
+
 } from "./styled";
 import Logo from "../../assents/logo.svg";
 import { useForm } from "../../hooks/useForm";
@@ -14,19 +17,23 @@ import { login } from "./UserLogin";
 import { useProtected } from "../../hooks/useProtected";
 
 export default function Login({ setRightButtonText }) {
-  const navigate = useNavigate()
-  useProtected()
-  const [form, onChange, clear] = useForm({ email: "", password: "" })
-  const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate();
+  useProtected();
+  const [form, onChange, clear] = useForm({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const onSubmitLogin = (event) => {
-    event.preventDefault()
-    login(form, clear, navigate, setRightButtonText, setIsLoading)
-  }
+    event.preventDefault();
+    login(form, clear, navigate, setRightButtonText, setIsLoading);
+  };
 
   return (
     <LoginContainer>
       <LogoImage src={Logo} alt={"Logo Labefood"} />
+
+      <SubTitle><b>Entrar</b></SubTitle>
       <form onSubmit={onSubmitLogin}>
         <FormContainer>
           <TextField
@@ -42,12 +49,9 @@ export default function Login({ setRightButtonText }) {
           />
           <TextField
             name={"password"}
-
             label={"Senha"}
-
             value={form.password}
             onChange={onChange}
-
             fullWidth
             margin="normal"
             color="terciary"
@@ -56,7 +60,7 @@ export default function Login({ setRightButtonText }) {
             pattern={"^.{6,}"}
           />
 
-          <Button
+          <ButtonGo
             sx={{
               height: 51,
               boxShadow: 0,
@@ -68,8 +72,11 @@ export default function Login({ setRightButtonText }) {
             type={"submit"}
             color={"primary"}
           >
-            Entrar
-          </Button>
+
+          <b>Entrar</b>  
+          </ButtonGo>
+
+      
         </FormContainer>
       </form>
       <CadastroContainer>
@@ -86,5 +93,5 @@ export default function Login({ setRightButtonText }) {
         </Typography>
       </CadastroContainer>
     </LoginContainer>
-  )
+  );
 }

@@ -1,3 +1,5 @@
+
+import RadioGroup from '@material-ui/core/RadioGroup';
 import styled from "styled-components";
 
 export const NomeRestaurante = styled.h4`
@@ -14,6 +16,7 @@ export const InfoRestaurante = styled.div`
     margin-top: 2vh;
     margin-left: 4vw;
     row-gap: 1vh;
+
 `
 
 export const  DetalhesDoValor = styled.section`
@@ -33,6 +36,7 @@ export const Pagamento = styled.div`
     height: 6vh;
     gap: 2vh;
     margin-top: 8vh ;
+
 `
 export const ValorAPagar = styled.div`
     display: flex;
@@ -43,7 +47,7 @@ export const ValorAPagar = styled.div`
     width: 42vw;
     margin-top: 2vh;
     padding-bottom: 4vh;
-    line-height: 2.2
+    line-height: 2.2;
 `
 export const Preco = styled.h3`
     color: red;
@@ -57,32 +61,9 @@ export const DivStyle = styled.div`
     padding: 5px;
 `
 
-export const Circulo = styled.div`
-    width: 4vw;
-    height: 2vh;
-   border-radius: 50%;
-   border: 3px solid black;
+export const RadioGroupo = styled(RadioGroup)`
+color: black;
+margin-left:5vw;
 `
 
-export const FormaDePagamento = styled.section`
-    display: flex;
-    flex-direction: column;
-    height: 10vh;
-    /* margin-top: 1vh; */
-    margin-bottom: 16vh;
-`
-export const DivButton = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 16vh;
-    align-items: flex-end;
-    margin-top: 2vh;
-`
 
-export const Button = styled.button`
-    width: 90vw;
-    height: 6vh;
-    background-color: #E8222E;
-    border: none;
-    border-radius: 1vw;
-    `

@@ -1,5 +1,5 @@
 import React from 'react'
-import {CardStyle, ImgProduto, Quantidade, DivStyle, DetalhesProduto} from './style'
+import {CardStyle, ImgProduto, Quantidade, DivStyle, DetalhesProduto, NameProd, DescriptionCard, Preco, ButtonCard, DivRight} from './style'
 
 export default function CardProduto() {
 
@@ -9,13 +9,17 @@ export default function CardProduto() {
     <CardStyle>
         <ImgProduto src={imgTest}/>
         <DetalhesProduto>
-          <p>nome do produto</p>
-          <p>descrição do produto</p>
-          <h3>preço do produto</h3>
+          <NameProd><b>nome do produto</b></NameProd>
+          <DescriptionCard>descrição do produto</DescriptionCard>
+          <Preco>R$15,00</Preco>
         </DetalhesProduto>
+        <DivRight>
         <DivStyle>
           <Quantidade> 2 </Quantidade>
         </DivStyle>
+        <ButtonCard>remover</ButtonCard>
+        </DivRight>
+
     </CardStyle>
   )
 }

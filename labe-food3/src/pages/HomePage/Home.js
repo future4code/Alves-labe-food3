@@ -1,5 +1,4 @@
 import React, {
-  useContext,
   useEffect,
   useLayoutEffect,
   useState,
@@ -28,11 +27,7 @@ export default function Home() {
     gotoDetalhesPage(navigate, id);
   };
 
-  // useLayoutEffect(() => {
-  //   setColors.setColor("#cb4646");
-  //   setColors.setColorCrd("");
-  //   setColors.setColorPrifile("");
-  // }, []);
+
 
   useEffect(() => {
     GetRestaurantes();
