@@ -1,4 +1,6 @@
+
 import styled from "styled-components";
+
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -35,6 +37,7 @@ export const SubTitle = styled.p`
   margin-top: 2vw;
 `;
 
+
 export const ButtonLogin = styled.button`
   border: none;
   background-color: #ffff;
@@ -49,3 +52,4 @@ export const ButtonGo = styled.button`
   padding: 1.5vh 19vh;
   margin-top: 1vh;
 `;
+

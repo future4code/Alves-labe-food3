@@ -1,3 +1,4 @@
+
 export const goInicio = (navigate) => {
   navigate("/");
 };
@@ -37,3 +38,4 @@ export const goToEditUsuario = (navigate) => {
 export const goToEditEndereco = (navigate) => {
   navigate("/edit/endereco");
 };
+

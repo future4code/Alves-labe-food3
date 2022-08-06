@@ -1,18 +1,22 @@
 import React from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import { HeaderBar, TitleBar } from "./Styled";
+import {goBack} from '../../routes/coordinator'
+import { useNavigate } from "react-router-dom";
+import { HeaderBar, TitleBar, BackButton } from "./Styled";
 
-export default function Header() {
+export default function Header(props) {
+  const{title, back} = props
+
+  const navigate = useNavigate()
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 2 }}>
       <AppBar position="static">
         <HeaderBar color="white" variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          </IconButton>
-          <TitleBar variant="h5" color="prymaryColor" component="div">
-            iFuture
+        {back ==='true'? <BackButton onClick ={() => goBack(navigate)}/> : '' }
+          <TitleBar variant="h6" color="prymaryColor" component="div">
+            {title}
           </TitleBar>
         </HeaderBar>
       </AppBar>

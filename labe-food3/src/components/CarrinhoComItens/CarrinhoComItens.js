@@ -12,6 +12,7 @@ export default function CarrinhoComItens() {
     const handleChange = (event) => {
       setValue(event.target.value);
     };
+
   return (
     <DivPai>
       <InfoRestaurante>
@@ -20,6 +21,8 @@ export default function CarrinhoComItens() {
         <p>30 - 45 min</p>
       </InfoRestaurante>
       <CardProduto />
+      {/* <CardProduto /> */}
+
       {/* <CardProduto /> */}
       <CardProduto />
       <DetalhesDoValor>
@@ -52,10 +55,3 @@ export default function CarrinhoComItens() {
   )
 }
 
-
-
-
-
-
-  
-    

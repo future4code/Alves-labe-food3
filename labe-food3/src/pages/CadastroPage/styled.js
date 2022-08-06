@@ -1,12 +1,20 @@
 import styled from "styled-components";
 
 export const ScreenContainer = styled.div`
+
   width: 100%;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+	width: 100%;
+	min-height: 80vh;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+	align-items: center;
+
 `;
 
 export const LogoImage = styled.img`

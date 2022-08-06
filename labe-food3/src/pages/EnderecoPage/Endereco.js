@@ -1,10 +1,13 @@
 import React from "react";
+
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { ScreenContainer, InputsContainer, ButtonGo } from "./styled";
 
 const Endereco = () => {
   return (
+    <div>
+      <Header title ='Cadastrar' back ='true'/>
     <ScreenContainer>
       <p><b>Meu endereço</b></p>
 
@@ -80,6 +83,7 @@ const Endereco = () => {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
   );
 };
 

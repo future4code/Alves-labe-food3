@@ -7,10 +7,11 @@ import Stack from "@mui/material/Stack";
 import { goPerfil } from "../../../routes/coordinator";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
+import Header from '../../../components/Header/Header'
 import { ScreenContainer, InputsContainer } from "./styled";
-import Header from "../../../components/Header/Header";
 
 const Endereco = () => {
+
   const [form, onChange] = useForm({
     street: "",
     number: "",
@@ -53,6 +54,38 @@ const Endereco = () => {
         <b>Editar Endereço</b>
       </Title>
 
+
+  const [form, onChange] = useForm({street:'', number:'', neighbourhood:'',city:'',state:'', complement:''})
+
+  const navigate = useNavigate()
+
+  const onSubmitAdress = (event) =>{
+    event.preventDefault()
+    UpdateAdress()
+    goPerfil(navigate)
+  }
+
+  const UpdateAdress = () =>{
+    axios.put(`${BASE_URL}address`,form,{
+      headers:{
+        auth:localStorage.getItem('token')
+      }
+     }).then((resp) =>{
+      localStorage.removeItem('token')
+      localStorage.setItem('token', resp.data.token)
+      alert('Endereço Atualizado')
+      document.location.reload(true)
+     }).catch((err) =>{
+      console.log(err)
+     })
+  }
+
+
+
+  return (
+    <div>
+    <Header title ='Editar Perfil' back = 'true'/>
+    <ScreenContainer> 
       <form onSubmit={onSubmitAdress}>
         <InputsContainer>
           <TextField
@@ -62,6 +95,7 @@ const Endereco = () => {
             margin={"dense"}
             name={"street"}
             value={form.street}
+
             onChange={onChange}
             fullWidth
             required
@@ -74,7 +108,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"number"}
             value={form.number}
-            onChange={onChange}
+            onChange ={onChange}
+
             fullWidth
             required
           />
@@ -85,7 +120,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"complement"}
             value={form.complement}
-            onChange={onChange}
+            onChange ={onChange}
+
             fullWidth
           />
           <TextField
@@ -95,7 +131,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"neighbourhood"}
             value={form.neighbourhood}
-            onChange={onChange}
+            onChange ={onChange}
+
             fullWidth
             required
           />
@@ -106,7 +143,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"city"}
             value={form.city}
-            onChange={onChange}
+            onChange ={onChange}
+
             fullWidth
             required
           />
@@ -117,7 +155,8 @@ const Endereco = () => {
             margin={"dense"}
             name={"state"}
             value={form.state}
-            onChange={onChange}
+          onChange ={onChange}
+
             fullWidth
             required
           />
@@ -137,6 +176,7 @@ const Endereco = () => {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
   );
 };
 

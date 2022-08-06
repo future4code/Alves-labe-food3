@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CardStyle = styled.div`
     display: flex;
+
     align-items:column;
     border: 1px solid #b8b8b8;
     margin-top: 2vh;
@@ -14,7 +15,9 @@ export const CardStyle = styled.div`
 export const ImgProduto = styled.img`
     width: 27vw;
     border-radius: 10% 0% 0% 10% / 10% 0% 0% 10% ;
+    gap: 1rem;
 `
+
 export const DivStyle = styled.div`
     display: flex;
     justify-content: center;
@@ -67,4 +70,20 @@ display:flex;
 flex-direction:column;
 align-items: flex-end;
 justify-content:space-between;
+    border: 1px solid red;
+    height: 4vh;
+    width: 8vw;
+    margin-left: 8vw;
+`
+
+export const Quantidade = styled.h4`
+    margin-top: 0.3rem;
+    color: red;
+`
+export const DetalhesProduto = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 4vw;
+    margin-top: 1vh;
+
 `

@@ -1,6 +1,6 @@
+
 import RadioGroup from '@material-ui/core/RadioGroup';
 import styled from "styled-components";
-
 
 export const NomeRestaurante = styled.h4`
     color: red;
@@ -9,7 +9,6 @@ export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-  
 `
 export const InfoRestaurante = styled.div`
     display: flex;
@@ -17,7 +16,7 @@ export const InfoRestaurante = styled.div`
     margin-top: 2vh;
     margin-left: 4vw;
     row-gap: 1vh;
-  
+
 `
 
 export const  DetalhesDoValor = styled.section`
@@ -29,7 +28,6 @@ export const  DetalhesDoValor = styled.section`
     justify-content: space-between;
     border-bottom: 1px solid black;
     position: relative;
-   
 `
 export const Pagamento = styled.div`
     display: flex;
@@ -50,7 +48,6 @@ export const ValorAPagar = styled.div`
     margin-top: 2vh;
     padding-bottom: 4vh;
     line-height: 2.2;
-   
 `
 export const Preco = styled.h3`
     color: red;
@@ -63,7 +60,6 @@ export const DivStyle = styled.div`
     gap: 4vw;
     padding: 5px;
 `
-
 
 export const RadioGroupo = styled(RadioGroup)`
 color: black;

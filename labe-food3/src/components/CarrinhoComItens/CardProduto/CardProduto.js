@@ -19,6 +19,7 @@ export default function CardProduto() {
         </DivStyle>
         <ButtonCard>remover</ButtonCard>
         </DivRight>
+
     </CardStyle>
   )
 }

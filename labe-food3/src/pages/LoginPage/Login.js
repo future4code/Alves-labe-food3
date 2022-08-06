@@ -1,15 +1,15 @@
-import { TextField } from "@mui/material";
+import { TextField, Button, Typography} from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goCadastro } from "../../routes/coordinator";
 import {
-  ButtonLogin,
   CadastroContainer,
   FormContainer,
   LoginContainer,
   LogoImage,
   SubTitle,
   ButtonGo,
+
 } from "./styled";
 import Logo from "../../assents/logo.svg";
 import { useForm } from "../../hooks/useForm";
@@ -17,10 +17,12 @@ import { login } from "./UserLogin";
 import { useProtected } from "../../hooks/useProtected";
 
 export default function Login({ setRightButtonText }) {
+
   const navigate = useNavigate();
   useProtected();
   const [form, onChange, clear] = useForm({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+
 
   const onSubmitLogin = (event) => {
     event.preventDefault();
@@ -30,6 +32,7 @@ export default function Login({ setRightButtonText }) {
   return (
     <LoginContainer>
       <LogoImage src={Logo} alt={"Logo Labefood"} />
+
       <SubTitle><b>Entrar</b></SubTitle>
       <form onSubmit={onSubmitLogin}>
         <FormContainer>
@@ -58,28 +61,36 @@ export default function Login({ setRightButtonText }) {
           />
 
           <ButtonGo
-            type="submit"
+            sx={{
+              height: 51,
+              boxShadow: 0,
+              color: "white",
+            }}
             fullWidth
-            variant="contained"
-            color="primary"
-            margin="normal"
-            font-color="secondary"
+            size={"large"}
+            variant={"contained"}
+            type={"submit"}
+            color={"primary"}
           >
+
           <b>Entrar</b>  
           </ButtonGo>
+
+      
         </FormContainer>
       </form>
       <CadastroContainer>
-        <ButtonLogin
+        <Typography
           onClick={() => goCadastro(navigate)}
           type="submit"
           fullWidth
           variant="text"
-          color="primary"
+          color="secundary"
           margin="normal"
+          style={{ cursor: 'pointer' }}
         >
           Não possui cadastro? Clique aqui.
-        </ButtonLogin>
+        </Typography>
       </CadastroContainer>
     </LoginContainer>
   );

@@ -28,12 +28,6 @@ export default function Home() {
   };
 
 
-  // useLayoutEffect(() => {
-  //   setColors.setColor("#cb4646");
-  //   setColors.setColorCrd("");
-  //   setColors.setColorPrifile("");
-  // }, []);
-
 
   useEffect(() => {
     GetRestaurantes();
@@ -170,7 +164,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
+      <Header title ='Ifuture'/>
       <main>
         <form>
           <SearchGroup>

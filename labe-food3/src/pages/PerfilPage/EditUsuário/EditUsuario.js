@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
@@ -8,15 +9,43 @@ import { goPerfil } from "../../../routes/coordinator";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
 
+
+
 function EditUsuario() {
   const [form, onChange] = useForm({ name: "", email: "", cpf: "" });
   const navigate = useNavigate();
+
 
   const onSubmitUser = (event) => {
     event.preventDefault();
     UpdateProfile();
     goPerfil(navigate);
   };
+
+  const [form, onChange] = useForm({name:'', email:'', cpf:''})
+  const navigate = useNavigate()
+
+
+  const onSubmitUser =(event) =>{
+    event.preventDefault()
+    UpdateProfile()
+    goPerfil(navigate)
+
+  }
+
+  const UpdateProfile = () =>{
+    axios.put(`${BASE_URL}profile`,form,{
+      headers:{
+        auth:localStorage.getItem('token')
+      }
+     }).then((resp) =>{
+      alert('Cadastro Atualizado')
+      document.location.reload(true)
+     }).catch((err) =>{
+      console.log(err)
+     })
+  }
+
 
   const UpdateProfile = () => {
     axios
@@ -35,11 +64,19 @@ function EditUsuario() {
   };
 
   return (
+    <div>
+    <Header title ='Editar Perfil' back = 'true'/>
     <ScreenContainer>
+
       <p>Editar Perfil</p>
       <hr />
       <form onSubmit={onSubmitUser}>
         <InputsContainer>
+
+        <hr/>
+         <form onSubmit={onSubmitUser}>
+         <InputsContainer>
+
           <TextField
             label="Nome"
             value={form.name}
@@ -92,7 +129,12 @@ function EditUsuario() {
         </Stack>
       </form>
     </ScreenContainer>
+
   );
+
+    </div>
+  )
+
 }
 
 export default EditUsuario;

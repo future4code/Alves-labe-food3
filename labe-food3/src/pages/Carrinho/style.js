@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Titulo = styled.div`
-
   display: flex;
   justify-content: center;
   padding-top: 2vh;
@@ -17,3 +16,4 @@ export const Endereco = styled.div`
   line-height: 1.5;
   row-gap: 1vh;
 `;
+
