@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 
 export const ScreenContainer = styled.div`
   width: 100%;
@@ -29,3 +30,11 @@ export const ButtonGo = styled.button`
 export const Title = styled.p`
 margin-top:4vw;
 `
+
+export const ChevronLeftIconE = styled(ChevronLeftIcon)`
+display: flex;
+margin-top:1vh;
+margin-right:50vh;
+`
+
+

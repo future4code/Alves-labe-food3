@@ -9,6 +9,7 @@ import {
   Pagamento,
   ValorAPagar,
   Preco,
+  ButtonGo
 } from "./style";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
@@ -42,7 +43,7 @@ export default function CarrinhoComItens() {
           <Preco>R$ 0.00</Preco>
         </ValorAPagar>
       </DetalhesDoValor>
-      <FormControl>
+      <FormControl >
         <RadioGroupo
           aria-labelledby="demo-controlled-radio-buttons-group"
           name="controlled-radio-buttons-group"
@@ -58,8 +59,19 @@ export default function CarrinhoComItens() {
             value="cartao"
             control={<Radio color="secundary" />}
             label="Cartão de crédito"
+           
           />
-        </RadioGroupo>
+        </RadioGroupo >
+        <ButtonGo
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            margin="normal"
+            font-color="secondary"
+          >
+            <b>Confirmar</b>
+          </ButtonGo>
       </FormControl>
     </DivPai>
   );
