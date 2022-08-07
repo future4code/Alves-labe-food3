@@ -1,4 +1,6 @@
+import RadioGroup from '@material-ui/core/RadioGroup';
 import styled from "styled-components";
+
 
 export const StatusCarrinho = styled.div`
     display: flex;
@@ -20,8 +22,7 @@ export const Pagamento = styled.div`
     justify-content: space-between;
     height: 10vh;
     margin-top: 6vh;
-    line-height: 1.7
-
+    line-height: 1.7;
 `
 export const ValorAPagar = styled.div`
     display: flex;
@@ -31,8 +32,7 @@ export const ValorAPagar = styled.div`
     height: 8vh;
     width: 42vw;
     padding-bottom: 4vh;
-    line-height: 2.2
-
+    line-height: 2.2;
 `
 export const Preco = styled.h3`
     color: red;
@@ -44,13 +44,7 @@ export const DivStyle = styled.div`
     margin-left: 4vw;
     gap: 4vw;
     padding: 5px;
-`
 
-export const Circulo = styled.div`
-    width: 4vw;
-    height: 2vh;
-   border-radius: 50%;
-   border: 3px solid black;
 `
 export const DivButton = styled.div`
     display: flex;
@@ -64,5 +58,10 @@ export const Button = styled.button`
     height: 6vh;
     background-color: rgb(245 145 151);
     border: none;
-    border-radius: 1vw;
+    border-radius: 1vw;` 
+
+
+export const RadioGroupo = styled(RadioGroup)`
+color: black !important;
+margin-left:5vw;
 `
