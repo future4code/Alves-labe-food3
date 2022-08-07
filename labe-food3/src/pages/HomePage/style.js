@@ -11,6 +11,7 @@ export const SearchGroup = styled.div`
 `;
 export const ImputSearch = styled(TextField)`
   width: 70vh;
+  
 `;
 export const SearchIcon = styled(SearchOutlined)`
   width: 4vw;

@@ -2,13 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import TextField from "@mui/material/TextField";
-import { ButtonGo, Title } from "./styled";
+import { ButtonGo, Title, ChevronLeftIconE } from "./styled";
 import Stack from "@mui/material/Stack";
 import { goPerfil } from "../../../routes/coordinator";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
-import Header from '../../../components/Header/Header'
 import { ScreenContainer, InputsContainer } from "./styled";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import { goBack } from "../../../routes/coordinator";
+import Header from '../../../components/Header/Header'
 
 const Endereco = () => {
 
@@ -48,43 +50,9 @@ const Endereco = () => {
   };
 
   return (
-    <ScreenContainer>
-      <Header />
-      <Title>
-        <b>Editar Endereço</b>
-      </Title>
-
-
-  const [form, onChange] = useForm({street:'', number:'', neighbourhood:'',city:'',state:'', complement:''})
-
-  const navigate = useNavigate()
-
-  const onSubmitAdress = (event) =>{
-    event.preventDefault()
-    UpdateAdress()
-    goPerfil(navigate)
-  }
-
-  const UpdateAdress = () =>{
-    axios.put(`${BASE_URL}address`,form,{
-      headers:{
-        auth:localStorage.getItem('token')
-      }
-     }).then((resp) =>{
-      localStorage.removeItem('token')
-      localStorage.setItem('token', resp.data.token)
-      alert('Endereço Atualizado')
-      document.location.reload(true)
-     }).catch((err) =>{
-      console.log(err)
-     })
-  }
-
-
-
-  return (
     <div>
-    <Header title ='Editar Perfil' back = 'true'/>
+    <Header title ={<ChevronLeftIconE onClick={()=>goBack(navigate)} sx={{ fontSize: 36 }} />} /> 
+   
     <ScreenContainer> 
       <form onSubmit={onSubmitAdress}>
         <InputsContainer>

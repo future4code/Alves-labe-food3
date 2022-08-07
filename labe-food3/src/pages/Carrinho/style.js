@@ -9,11 +9,18 @@ export const Titulo = styled.div`
 export const Endereco = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2vh;
+border-top:#B8B8B8 solid 1px;
   background-color: rgb(238 238 238);
-  height: 6vh;
+  height: 8vh;
   padding: 4vw;
   line-height: 1.5;
   row-gap: 1vh;
 `;
 
+export const TitleEndereco = styled.p`
+color:#B8B8B8;
+`
+
+export const DescriptionEndereco = styled.p`
+font-size:2.5vh;
+`

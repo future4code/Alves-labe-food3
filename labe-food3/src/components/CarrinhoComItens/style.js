@@ -66,4 +66,10 @@ color: black;
 margin-left:5vw;
 `
 
-
+export const ButtonGo = styled.button`
+  border: none;
+  background-color: #e8222e;
+  font-size: 4.5vw;
+  padding: 1.5vh 9vw;
+  margin-top: 1vh;
+`;
