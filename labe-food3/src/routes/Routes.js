@@ -7,7 +7,7 @@ import Home from "../pages/HomePage/Home";
 import Perfil from "../pages/PerfilPage/Perfil";
 import Erro from "../pages/ErroPage/Erro";
 import Endereco from "../pages/EnderecoPage/Endereco";
-import EditUsuario from  '../pages/PerfilPage/EditUsuário/EditUsuario'
+import EditUsuario from  '../pages/PerfilPage/EditUsuario/EditUsuario'
 import Carrinho from "../pages/Carrinho/Carrinho";
 import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
 import {DetalhesPage} from '../pages/DetalhesPage/DetalhesPage'

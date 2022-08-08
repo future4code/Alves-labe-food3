@@ -19,12 +19,10 @@ width:150vw;
 
 
 
-`
-
 export const BackButton = styled(ArrowBackIosIcon)`
   color: black;
   position:relative;  
   right:48%;
   cursor: pointer;
-`;
+`
 

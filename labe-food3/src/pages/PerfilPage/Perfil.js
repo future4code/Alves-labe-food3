@@ -1,278 +1,181 @@
-
-import React,{ useState, useEffect } from 'react'
-import { Typography, ListItem, ListItemSecondaryAction, Box, ListItemText, Grid, IconButton, List, Paper } from "@mui/material";
-import {useNavigate} from 'react-router-dom'
-import { useStyles } from './styled'
+import React, { useEffect, useState } from 'react'
+import {
+  Container,
+  Toolbar,
+  Grid,
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  Paper,
+} from "@material-ui/core";
+import { useNavigate } from 'react-router-dom'
 import EditIcon from '../../assets/editIcon.png'
 import { goToEditUsuario, goToEditEndereco } from '../../routes/coordinator'
-import Footer from "../../components/Footer/Footer";
-import Header from '../../components/Header/Header'
+import { useStyles } from "./styled";
 import { BASE_URL } from '../../constants/urls'
 import axios from 'axios'
 
 
-// import React,{ useState, useEffect } from 'react'
-// import { Typography, ListItem, ListItemSecondaryAction, Box, ListItemText, Grid, IconButton, List, Paper } from "@mui/material";
-// import {useNavigate} from 'react-router-dom'
-// import { useStyles } from './styled'
-// import EditIcon from '../../assets/editIcon.png'
-// import { goToEditUsuario, goToEditEndereco } from '../../routes/coordinator'
-// import Footer from "../../components/Footer/Footer";
-// import { BASE_URL } from '../../constants/urls'
-// import axios from 'axios'
+function Perfil() {
+
+  const classes = useStyles();
+  const navigate = useNavigate()
+  const [user, setUser] = useState({})
+  const [orders, setOrders] = useState([])
 
 
-// export default function Perfil() {
-
-  const [users, setUsers] = useState({})
-  const [history, setHistory] = useState([])
-
-
-
-//   // const classes = useStyles();
-//   // const navigate = useNavigate();
-
-// useEffect(() => {
-//   getProfile()
-//   OrdersHistory()
-// },[])
+  useEffect(() => {
+    GetProfile()
+    GetOrderHistory()
+  }, [])
 
 
-// const getProfile = () =>{
-//   axios.get(`${BASE_URL}profile`,{
-//     headers:{
-//       auth:localStorage.getItem('token')
-//     }
-//   }).then((resp) =>{
-//       setUsers(resp.data.user)
-//   }).catch((err)=>{
-//       alert('Erro na requisição, tente novamente')
-//   })
+  const GetProfile = () => {
+    axios.get(`${BASE_URL}profile`, {
+      headers: {
+        auth: localStorage.getItem("token"),
+      },
+    }).then((resp) => {
+      setUser(resp.data.user)
+    }).catch((err) => {
+      console.log(err)
 
-// }
+    })
+  }
 
+  const GetOrderHistory = () => {
+    axios.get(`${BASE_URL}orders/history`, {
+      headers: {
+        auth: localStorage.getItem("token"),
+      },
+    }).then((resp) => {
+      setOrders(resp.data.orders)
+    }).catch((err) => {
+      console.log(err)
 
-// const OrdersHistory = () =>{
-//   axios.get(`${BASE_URL}orders/history`,{
-//     headers:{
-//       auth:localStorage.getItem('token')
-//     }
-//   }).then((resp) =>{
-//     setHistory(resp.data.orders)
-//   }).catch((err) =>{
-//     console.log(err)
-//   })
+    })
+  }
 
-const OrdersHistory = () =>{
-  axios.get(`${BASE_URL}orders/history`,{
-    headers:{
-      auth:localStorage.getItem('token')
-    }
-  }).then((resp) =>{
-    setHistory(resp.data.orders)
-  }).catch((err) =>{
-    console.log(err)
-  })
+  console.log(orders)
 
-
-// }
-
-
-// console.log(history)
-
-// const ListHistory = history && history.map((OrderHistory) =>{
-//   const date = new Date(OrderHistory.expiresAt).toLocaleDateString(
-//     "pt-br"
-//   );
-
-//     return (
-//       <Grid container className={classes.ordersInnerGrid}>
-//       <Grid
-//         item
-//         xs={12}
-//         className={classes.orderGridItem}
-//       >
-//         <Paper className={classes.withPadding}>
-//           <Typography className={classes.restaurantText}>
-//             {OrderHistory.restaurantName}
-//           </Typography>
-//           <Typography className={classes.dateText}>
-//             {date}
-//           </Typography>
-//           <Typography className={classes.totalPriceText}>
-//             SUBTOTAL: {OrderHistory.totalPrice.toFixed(2)}R$
-//           </Typography>
-//         </Paper>
-//       </Grid>
-//     </Grid>
-//     )
-// })
-
-const ListHistory = history && history.map((OrderHistory) =>{
-  const date = new Date(OrderHistory.expiresAt).toLocaleDateString(
-    "pt-br"
-  );
-
+  const ListOrders = orders && orders.map((order) => {
+    const date = new Date(order.expiresAt).toLocaleDateString(
+      "pt-br")
     return (
       <Grid container className={classes.ordersInnerGrid}>
-      <Grid
-        item
-        xs={12}
-        className={classes.orderGridItem}
-      >
-        <Paper className={classes.withPadding}>
-          <Typography className={classes.restaurantText}>
-            {OrderHistory.restaurantName}
-          </Typography>
-          <Typography className={classes.dateText}>
-            {date}
-          </Typography>
-          <Typography className={classes.totalPriceText}>
-            SUBTOTAL: {OrderHistory.totalPrice.toFixed(2)}R$
-          </Typography>
-        </Paper>
+        <Grid
+
+          item
+          xs={12}
+          className={classes.orderGridItem}
+        >
+          <Paper className={classes.withPadding}>
+            <Typography className={classes.restaurantText}>
+              {order.restaurantName}
+            </Typography>
+            <Typography className={classes.dateText}>
+              {date}
+            </Typography>
+            <Typography className={classes.totalPriceText}>
+              SUBTOTAL R${order.totalPrice.toFixed(2)}
+            </Typography>
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
+
     )
-})
+  })
 
   return (
-    <div>
-      <Header title = "Meu Perfil" />
-      <List>
-        <ListItem className={classes.userListItem}>
-          <Box className={classes.listBox}>
-            <ListItemText
-              primary={users.name}
-            />
-            <ListItemText
-              primary={users.email}
-            />
-            <ListItemText
-              primary={users.cpf}
-            />
-          </Box>
-          <ListItemSecondaryAction>
-            <IconButton
-              edge="end"
-              aria-label="edit"
-              onClick = {() => goToEditUsuario(navigate)}
-            >
-              <img
-                className={classes.imgEditIcon}
-                src={EditIcon}
-                alt="Edit" />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
+    <Container
+      maxWidth="md"
+      className={classes.container}
+      data-testid="container"
+    >
+      <div
+      >
 
-//   return (
-//     <div>
-//       <List>
-//         <ListItem className={classes.userListItem}>
-//           <Box className={classes.listBox}>
-//             <ListItemText primary={users.name} />
-//             <ListItemText primary={users.email} />
-//             <ListItemText primary={users.cpf} />
-//           </Box>
-//           <ListItemSecondaryAction>
-//             <IconButton
-//               edge="end"
-//               aria-label="edit"
-//               onClick={() => goToEditUsuario(navigate)}
-//             >
-//               <img className={classes.imgEditIcon} src={EditIcon} alt="Edit" />
-//             </IconButton>
-//           </ListItemSecondaryAction>
-//         </ListItem>
+        <Toolbar />
+        <Grid container>
+          <Grid item xs={12}>
+            <List>
+              <ListItem className={classes.userListItem}>
+                <Box className={classes.listBox}>
+                  <ListItemText
+                    className={classes.noMargin}
+                    primary={user.name}
+                  />
+                  <ListItemText
+                    className={classes.noMargin}
+                    primary={user.email}
+                  />
+                  <ListItemText
+                    className={classes.noMargin}
+                    primary={user.cpf}
+                  />
+                </Box>
+                <ListItemSecondaryAction>
+                  <IconButton
+                    edge="end"
+                    aria-label="edit"
 
+                  >
+                    <img
+                      src={EditIcon}
+                      alt="Edit"
+                      className={classes.imgEditIcon}
+                      onClick={() => goToEditUsuario(navigate)}
+                    />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
 
-//         <ListItem>
-//           <Box>
-//             <Typography>Endereço cadastrado</Typography>
+              <ListItem className={classes.addressListItem}>
+                <Box className={classes.listBox}>
+                  <ListItemText
+                    primary={
+                      <Typography className={classes.addressText}>
+                        Endereço cadastrado
+                        <br />
+                        {user.address}
+                      </Typography>
+                    }
+                  />
+                  <ListItemText />
+                </Box>
+                <ListItemSecondaryAction>
+                  <IconButton
+                    edge="end"
+                    aria-label="edit"
+                  >
+                    <img
+                      src={EditIcon}
+                      alt="Edit"
+                      className={classes.imgEditIcon}
+                      onClick={() => goToEditEndereco(navigate)}
+                    />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+          </Grid>
 
-//             <ListItemText primary={users.address} />
-//           </Box>
-//           <ListItemSecondaryAction>
-//             <IconButton
-//               edge="end"
-//               aria-label="edit"
-//               onClick={() => goToEditEndereco(navigate)}
-//             >
-//               <img className={classes.imgEditIcon} src={EditIcon} alt="Edit" />
-//             </IconButton>
-//           </ListItemSecondaryAction>
-//         </ListItem>
-//         <Grid item xs={12} className={classes.ordersOutterGrid}>
-//           <Box className={classes.withBorderBottom}>
-//             <Typography className={classes.historyText}>
-//               Histório de pedidos
-//             </Typography>
-//           </Box>
-//         </Grid>
-//         <Grid item xs={12} className={classes.orderGridItem}>
-//           <Typography inline="true" align="center">
-//            {order === null ? (
-//               "Você não realizou nenhum pedido"
-//             ) : (
-//               <Grid container className={classes.ordersInnerGrid}>
-//                 <Grid item xs={12} className={classes.orderGridItem}>
-//                   <Paper className={classes.withPadding}>
-//                     <Typography className={classes.restaurantText}>
-//                       Bullguer Vila Madalena
-//                     </Typography>
-//                     <Typography className={classes.dateText}>
-//                       23 outubro 2019
-//                     </Typography>
-//                     <Typography className={classes.totalPriceText}>
-//                       SUBTOTAL R$67,00
-//                     </Typography>
-//                   </Paper>
-//                 </Grid>
-//               </Grid>
-//             )}
-// 
-//             {history.length === 0? 'Você não realizou nenhum pedido' : ListHistory}
-//
-//           </Typography>
-//         </Grid>
-//       </List>
-//       <Footer/>
-//     </div>
-//   );
-// }
-
-            <ListItemText
-              primary={users.address}
-            />
-          </Box>
-          <ListItemSecondaryAction>
-            <IconButton
-              edge="end"
-              aria-label="edit"
-              onClick = {() => goToEditEndereco(navigate)}
-            >
-              <img
-                className={classes.imgEditIcon}
-                src={EditIcon}
-                alt="Edit" />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-        <Grid item xs={12} className={classes.ordersOutterGrid}>
-          <Box className={classes.withBorderBottom}>
-            <Typography className={classes.historyText}>
-              Histório de pedidos
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12} className={classes.orderGridItem}>
-          <Typography inline="true" align="center">
-            {history.length === 0? 'Você não realizou nenhum pedido' : ListHistory}
-          </Typography>
-        </Grid>
-      </List>
-      <Footer/>
-    </div>
+          <Grid item xs={12} className={classes.ordersOutterGrid}>
+            <Box className={classes.withBorderBottom}>
+              <Typography className={classes.historyText}>
+                Histório de pedidos
+              </Typography>
+            </Box>
+            {ListOrders}
+          </Grid>
+        </Grid> 
+      </div>
+    </Container>
   )
 }
+
+export default Perfil

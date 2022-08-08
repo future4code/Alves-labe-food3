@@ -75,15 +75,3 @@ justify-content:space-between;
     width: 8vw;
     margin-left: 8vw;
 `
-
-export const Quantidade = styled.h4`
-    margin-top: 0.3rem;
-    color: red;
-`
-export const DetalhesProduto = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 4vw;
-    margin-top: 1vh;
-
-`

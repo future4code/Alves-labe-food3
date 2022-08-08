@@ -1,5 +1,5 @@
-
 import React from "react";
+import Header from '../../../components/Header/Header'
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import { TextField } from "@mui/material";
@@ -22,29 +22,6 @@ function EditUsuario() {
     goPerfil(navigate);
   };
 
-  const [form, onChange] = useForm({name:'', email:'', cpf:''})
-  const navigate = useNavigate()
-
-
-  const onSubmitUser =(event) =>{
-    event.preventDefault()
-    UpdateProfile()
-    goPerfil(navigate)
-
-  }
-
-  const UpdateProfile = () =>{
-    axios.put(`${BASE_URL}profile`,form,{
-      headers:{
-        auth:localStorage.getItem('token')
-      }
-     }).then((resp) =>{
-      alert('Cadastro Atualizado')
-      document.location.reload(true)
-     }).catch((err) =>{
-      console.log(err)
-     })
-  }
 
 
   const UpdateProfile = () => {
@@ -67,12 +44,6 @@ function EditUsuario() {
     <div>
     <Header title ='Editar Perfil' back = 'true'/>
     <ScreenContainer>
-
-      <p>Editar Perfil</p>
-      <hr />
-      <form onSubmit={onSubmitUser}>
-        <InputsContainer>
-
         <hr/>
          <form onSubmit={onSubmitUser}>
          <InputsContainer>
@@ -129,11 +100,9 @@ function EditUsuario() {
         </Stack>
       </form>
     </ScreenContainer>
+    </div>
 
   );
-
-    </div>
-  )
 
 }
 

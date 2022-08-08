@@ -39,3 +39,7 @@ export const goToEditEndereco = (navigate) => {
   navigate("/edit/endereco");
 };
 
+export const goToCarrinho = (navigate) => {
+  navigate('/carrinho')
+}
+

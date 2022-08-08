@@ -1,5 +1,5 @@
 import React from "react";
-
+import Header from '../../components/Header/Header'
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { ScreenContainer, InputsContainer, ButtonGo } from "./styled";
