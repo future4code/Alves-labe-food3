@@ -1,20 +1,20 @@
 import styled from "styled-components";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 export const ScreenContainer = styled.div`
-
   width: 100%;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-	width: 100%;
-	min-height: 80vh;
-    display: flex;
-	flex-direction: column;
-    justify-content: center;
-	align-items: center;
-
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:5vh;
 `;
 
 export const LogoImage = styled.img`
@@ -37,4 +37,10 @@ export const ButtonGo = styled.button`
   font-size: 4.5vw;
   padding: 1.5vh 19vh;
   margin-top: 1vh;
+`;
+
+export const ChevronLeftIconE = styled(ChevronLeftIcon)`
+  display: flex;
+  margin-top: 1vh;
+  margin-right: 50vh;
 `;
