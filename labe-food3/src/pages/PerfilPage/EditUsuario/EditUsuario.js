@@ -1,15 +1,24 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom'
-import { useForm } from '../../../hooks/useForm'
-import { TextField, Button} from '@mui/material';
-import { InputsContainer, ScreenContainer, ButtonGo } from './styled'
-import Header from '../../../components/Header/Header'
+
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "../../../hooks/useForm";
+import { TextField } from "@mui/material";
+import { InputsContainer, ScreenContainer, ButtonGo } from "./styled";
 import Stack from "@mui/material/Stack";
 import {goPerfil} from '../../../routes/coordinator'
 import { BASE_URL } from '../../../constants/urls';
 import axios from 'axios'
 
 function EditUsuario() {
+  const [form, onChange] = useForm({ name: "", email: "", cpf: "" });
+  const navigate = useNavigate();
+
+
+  const onSubmitUser = (event) => {
+    event.preventDefault();
+    UpdateProfile();
+    goPerfil(navigate);
+  };
 
   const [form, onChange] = useForm({name:'', email:'', cpf:''})
   const navigate = useNavigate()
@@ -36,6 +45,21 @@ function EditUsuario() {
   }
 
 
+  const UpdateProfile = () => {
+    axios
+      .put(`${BASE_URL}profile`, form, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((resp) => {
+        alert("Cadastro Atualizado");
+        document.location.reload(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -96,8 +120,12 @@ function EditUsuario() {
         </Stack>
           </form>
     </ScreenContainer>
+
+  );
+
     </div>
   )
+
 }
 
 export default EditUsuario

@@ -63,6 +63,17 @@ export const ButtonCard = styled.button`
   margin-top: 50px;
 `;
 export const DivRight = styled.div`
+<<<<<<< HEAD
+display:flex;
+flex-direction:column;
+align-items: flex-end;
+justify-content:space-between;
+    border: 1px solid red;
+    height: 4vh;
+    width: 8vw;
+    margin-left: 8vw;
+`
+=======
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -71,3 +82,4 @@ export const DivRight = styled.div`
   width: 8vw;
   margin-left: 12.5vw;
 `;
+>>>>>>> 2e79ced0cc55d41089ada52019a089524037537a

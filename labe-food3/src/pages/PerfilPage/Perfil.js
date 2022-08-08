@@ -1,3 +1,4 @@
+
 import React,{ useState, useEffect } from 'react'
 import { Typography, ListItem, ListItemSecondaryAction, Box, ListItemText, Grid, IconButton, List, Paper } from "@mui/material";
 import {useNavigate} from 'react-router-dom'
@@ -5,7 +6,6 @@ import { useStyles } from './styled'
 import EditIcon from '../../assets/editIcon.png'
 import { goToEditUsuario, goToEditEndereco } from '../../routes/coordinator'
 import Footer from "../../components/Footer/Footer";
-import Header from '../../components/Header/Header'
 import { BASE_URL } from '../../constants/urls'
 import axios from 'axios'
 
@@ -49,6 +49,8 @@ const OrdersHistory = () =>{
 
 }
 
+console.log(history)
+
 const ListHistory = history && history.map((OrderHistory) =>{
   const date = new Date(OrderHistory.expiresAt).toLocaleDateString(
     "pt-br"
@@ -79,7 +81,6 @@ const ListHistory = history && history.map((OrderHistory) =>{
 
   return (
     <div>
-      <Header title = "Meu Perfil" />
       <List>
         <ListItem className={classes.userListItem}>
           <Box className={classes.listBox}>

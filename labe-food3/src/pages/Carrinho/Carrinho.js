@@ -9,6 +9,9 @@ import Footer from '../../components/Footer/Footer'
 export default function Carrinho() {
     return (
 
+      <div>
+       
+
         <div>
             <Header title = 'Meu Carrinho'/>
 

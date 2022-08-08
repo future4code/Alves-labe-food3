@@ -6,7 +6,6 @@ import { ScreenContainer, InputsContainer, LogoImage, ButtonGo } from "./styled"
 import Logo from "../../assents/logo.svg";
 import { goEndereco } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
 
 export default function Cadastro() {
   const navigate = useNavigate();
