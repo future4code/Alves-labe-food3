@@ -1,15 +1,13 @@
+
 import React from "react";
-import Header from '../../../components/Header/Header'
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import { TextField } from "@mui/material";
 import { InputsContainer, ScreenContainer, ButtonGo } from "./styled";
 import Stack from "@mui/material/Stack";
-import { goPerfil } from "../../../routes/coordinator";
-import { BASE_URL } from "../../../constants/urls";
-import axios from "axios";
-
-
+import {goPerfil} from '../../../routes/coordinator'
+import { BASE_URL } from '../../../constants/urls';
+import axios from 'axios'
 
 function EditUsuario() {
   const [form, onChange] = useForm({ name: "", email: "", cpf: "" });
@@ -22,6 +20,29 @@ function EditUsuario() {
     goPerfil(navigate);
   };
 
+  const [form, onChange] = useForm({name:'', email:'', cpf:''})
+  const navigate = useNavigate()
+
+
+  const onSubmitUser =(event) =>{
+    event.preventDefault()
+    UpdateProfile()
+    goPerfil(navigate)
+
+  }
+
+  const UpdateProfile = () =>{
+    axios.put(`${BASE_URL}profile`,form,{
+      headers:{
+        auth:localStorage.getItem('token')
+      }
+     }).then((resp) =>{
+      alert('Cadastro Atualizado')
+      document.location.reload(true)
+     }).catch((err) =>{
+      console.log(err)
+     })
+  }
 
 
   const UpdateProfile = () => {
@@ -47,16 +68,15 @@ function EditUsuario() {
         <hr/>
          <form onSubmit={onSubmitUser}>
          <InputsContainer>
-
           <TextField
             label="Nome"
-            value={form.name}
+            value ={form.name}
             onChange={onChange}
             placeholder="Nome e sobrenome"
             type="text"
             margin={"normal"}
             name={"name"}
-            variant="outlined"
+            variant='outlined'
             fullWidth
             required
             autoFocus
@@ -69,7 +89,7 @@ function EditUsuario() {
             type="email"
             margin={"normal"}
             name={"email"}
-            variant="outlined"
+            variant='outlined'
             fullWidth
             required
           />
@@ -80,13 +100,13 @@ function EditUsuario() {
             placeholder="000.000.000-00"
             margin={"normal"}
             name={"cpf"}
-            variant="outlined"
+            variant='outlined'
             fullWidth
             required
           />
-        </InputsContainer>
+          </InputsContainer>
 
-        <Stack direction="column" spacing={2}>
+          <Stack direction="column" spacing={2}>
           <ButtonGo
             type="submit"
             fullWidth
@@ -98,12 +118,14 @@ function EditUsuario() {
             <b>Salvar</b>
           </ButtonGo>
         </Stack>
-      </form>
+          </form>
     </ScreenContainer>
-    </div>
 
   );
 
+    </div>
+  )
+
 }
 
-export default EditUsuario;
+export default EditUsuario

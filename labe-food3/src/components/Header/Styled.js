@@ -8,6 +8,10 @@ margin-top:1vw;
 position:fixed;
 `
 
+`;
+
+<<<<<<< HEAD
+=======
 export const HeaderBar = styled(Toolbar)`
 padding-bottom:2vw;
 background-color:white;
@@ -19,10 +23,12 @@ width:150vw;
 
 
 
-export const BackButton = styled(ArrowBackIosIcon)`
-  color: black;
-  position:relative;  
-  right:48%;
-  cursor: pointer;
 `
+
+export const BackButton = styled(ArrowBackIosIcon)`
+  color: black ;
+  position: relative;
+  right: 48%;
+  cursor: pointer;
+`;
 

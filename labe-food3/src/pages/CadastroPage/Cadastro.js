@@ -1,5 +1,4 @@
 import React from "react";
-
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -7,7 +6,6 @@ import { ScreenContainer, InputsContainer, LogoImage, ButtonGo } from "./styled"
 import Logo from "../../assents/logo.svg";
 import { goEndereco } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-import Header from '../../components/Header/Header'
 
 export default function Cadastro() {
   const navigate = useNavigate();

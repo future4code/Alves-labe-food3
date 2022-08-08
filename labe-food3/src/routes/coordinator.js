@@ -15,6 +15,10 @@ export const goEndereco = (navigate) => {
   navigate("/endereco");
 };
 
+export const goToCarrinho = (navigate) => {
+  navigate("/carrinho");
+}; 
+
 export const goHome = (navigate) => {
   navigate("/home");
 };

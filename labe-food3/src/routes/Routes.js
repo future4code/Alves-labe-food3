@@ -11,7 +11,7 @@ import EditUsuario from  '../pages/PerfilPage/EditUsuario/EditUsuario'
 import Carrinho from "../pages/Carrinho/Carrinho";
 import EditEndereco from  '../pages/PerfilPage/EditEndereco/EditEndereco'
 import {DetalhesPage} from '../pages/DetalhesPage/DetalhesPage'
-
+import { HomeTest } from "../pages/HomePage/HomeTest";
 
 export default function Router() {
   return (
@@ -23,7 +23,7 @@ export default function Router() {
           <Route path="/login" element={< Login/>} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/endereco" element={<Endereco />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={< HomeTest />} />
           <Route path="/perfil" element={< Perfil />}/>
           <Route path="/edit/usuario" element={< EditUsuario />} />
           <Route path="/home/restaurantes" element={< DetalhesPage />} />
